@@ -14,6 +14,7 @@ import {
   BarChart3, 
   ShieldAlert, 
   Settings,
+  Share2,
   LogOut,
   ChevronLeft,
   ChevronRight
@@ -40,6 +41,7 @@ const navItems: NavItemConfig[] = [
   { name: 'DOCUMENTS', path: '/app/documents', icon: <FileText className="w-4 h-4" />, allowedRoles: ['ADMIN', 'HR', 'EMPLOYEE'] },
   { name: 'TAK AI', path: '/app/ai', icon: <Bot className="w-4 h-4 text-wt-yellow" />, allowedRoles: ['ADMIN', 'HR', 'FINANCE', 'MANAGER', 'EMPLOYEE'] },
   { name: 'REPORTS', path: '/app/reports', icon: <BarChart3 className="w-4 h-4" />, allowedRoles: ['ADMIN', 'HR', 'FINANCE', 'MANAGER'] },
+  { name: 'INTEGRATIONS', path: '/app/integrations', icon: <Share2 className="w-4 h-4 text-wt-yellow" />, allowedRoles: ['ADMIN', 'HR', 'FINANCE', 'MANAGER'] },
   { name: 'SECURITY', path: '/app/security', icon: <ShieldAlert className="w-4 h-4 text-wt-red" />, allowedRoles: ['ADMIN'] },
   { name: 'SETTINGS', path: '/app/settings', icon: <Settings className="w-4 h-4" />, allowedRoles: ['ADMIN', 'HR'] },
 ];

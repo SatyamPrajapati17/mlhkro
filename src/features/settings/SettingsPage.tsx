@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { GlassCard } from '../../components/ui/GlassCard';
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
 import { Badge } from '../../components/ui/Badge';
-import { Settings, Shield, Sliders, Moon, Check } from 'lucide-react';
+import { Settings, Shield, Sliders, Moon, Check, Share2, ArrowRight } from 'lucide-react';
 
 export const SettingsPage: React.FC = () => {
+  const navigate = useNavigate();
   const [threshold, setThreshold] = useState(0.5);
   const [faceRequired, setFaceRequired] = useState(true);
   const [lateGrace, setLateGrace] = useState(10);
@@ -106,6 +108,32 @@ export const SettingsPage: React.FC = () => {
           onChange={(e) => setLateGrace(parseInt(e.target.value) || 0)}
           helperText="Check-ins occurring past 09:30 + Grace are flagged as LATE"
         />
+      </GlassCard>
+
+      {/* Enterprise Integrations Ecosystem Card */}
+      <GlassCard variant="yellow" hud className="p-6 bg-wt-black/95 font-mono space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-wt-white/20 pb-3">
+          <div>
+            <h3 className="font-mono text-base uppercase font-bold text-wt-white flex items-center gap-2">
+              <Share2 className="w-4 h-4 text-wt-yellow" />
+              <span>EXTERNAL APP INTEGRATIONS & WEBHOOKS</span>
+            </h3>
+            <div className="text-xs text-wt-gray mt-0.5">
+              Slack, Google Calendar, RazorpayX, ZKTeco Hardware & Custom Webhooks
+            </div>
+          </div>
+          <Badge status="ACTIVE" label="4 CONNECTED" size="sm" />
+        </div>
+
+        <p className="text-xs text-wt-gray uppercase leading-relaxed">
+          Stream real-time biometric roll-calls into Slack, sync approved leaves with company Google Calendars, disburse payroll automatically via banking APIs, and ingest on-premise turnstile hardware.
+        </p>
+
+        <div className="pt-2 flex justify-end">
+          <Button variant="secondary" size="md" onClick={() => navigate('/app/integrations')}>
+            MANAGE APP INTEGRATIONS <ArrowRight className="w-4 h-4 ml-1.5" />
+          </Button>
+        </div>
       </GlassCard>
 
       {/* Accessibility / Motion */}

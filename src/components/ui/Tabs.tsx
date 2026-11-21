@@ -21,7 +21,7 @@ export const Tabs: React.FC<TabsProps> = ({
   className,
 }) => {
   return (
-    <div className={clsx('flex flex-wrap gap-2 border-b-2 border-wt-white/30 pb-1', className)}>
+    <div className={clsx('flex items-center gap-2 border-b-2 border-wt-white/30 pb-2 overflow-x-auto no-scrollbar', className)}>
       {tabs.map((tab) => {
         const isActive = tab.id === activeTab;
         return (
@@ -29,7 +29,7 @@ export const Tabs: React.FC<TabsProps> = ({
             key={tab.id}
             onClick={() => onChange(tab.id)}
             className={clsx(
-              'flex items-center gap-2 px-4 py-2 font-mono text-xs uppercase font-bold tracking-wider transition-all select-none border-2',
+              'flex items-center gap-2 px-4 py-2 font-mono text-xs uppercase font-bold tracking-wider transition-all select-none whitespace-nowrap shrink-0 border-2',
               isActive
                 ? 'bg-wt-yellow text-wt-black border-wt-yellow shadow-hardSm'
                 : 'bg-wt-black text-wt-white border-wt-white/30 hover:border-wt-white hover:text-wt-white'

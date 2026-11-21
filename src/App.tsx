@@ -17,6 +17,7 @@ import { DocumentsPage } from './features/documents/DocumentsPage';
 import { AiPage } from './features/ai/AiPage';
 import { ReportsPage } from './features/reports/ReportsPage';
 import { SecurityPage } from './features/security/SecurityPage';
+import { IntegrationsPage } from './features/integrations/IntegrationsPage';
 import { SettingsPage } from './features/settings/SettingsPage';
 import { UserRole } from './components/layout/Sidebar';
 
@@ -185,6 +186,16 @@ export const App: React.FC = () => {
             element={
               <RequireRole currentRole={currentRole} allowedRoles={['ADMIN', 'HR', 'FINANCE', 'MANAGER']}>
                 <ReportsPage />
+              </RequireRole>
+            }
+          />
+
+          {/* Integrations (ADMIN, HR, FINANCE, MANAGER) */}
+          <Route
+            path="integrations"
+            element={
+              <RequireRole currentRole={currentRole} allowedRoles={['ADMIN', 'HR', 'FINANCE', 'MANAGER']}>
+                <IntegrationsPage />
               </RequireRole>
             }
           />

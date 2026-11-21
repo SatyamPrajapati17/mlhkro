@@ -103,7 +103,7 @@ export const SecurityPage: React.FC = () => {
           <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">THREAT DETECTION & CRYPTOGRAPHY</div>
           <h2 className="font-display text-3xl font-black text-wt-white uppercase">SECURITY & AUDIT CHAIN</h2>
         </div>
-        <Button variant="primary" size="md" onClick={handleVerifyChain} disabled={isVerifying}>
+        <Button variant="primary" size="md" onClick={handleVerifyChain} disabled={isVerifying} className="whitespace-nowrap shrink-0">
           <ShieldCheck className="w-4 h-4 mr-2" />
           {isVerifying ? 'VERIFYING BLOCKS...' : '[ VERIFY INTEGRITY CHAIN ]'}
         </Button>

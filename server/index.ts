@@ -14,6 +14,7 @@ import { payrollRouter } from './routes/payroll';
 import { documentsRouter } from './routes/documents';
 import { aiRouter } from './routes/ai';
 import { securityRouter } from './routes/security';
+import { integrationsRouter } from './routes/integrations';
 import { requireAuth, requireRole } from './middleware/auth';
 import { listEmployees, getCompany, getAllCompanies } from './db';
 
@@ -88,6 +89,7 @@ async function startServer() {
   app.use('/api/documents', documentsRouter);
   app.use('/api/ai', aiRouter);
   app.use('/api/security', securityRouter);
+  app.use('/api/integrations', integrationsRouter);
 
   // Employees Route (Protected by requireAuth + role scoped)
   app.get('/api/employees', requireAuth, async (req: Request, res: Response) => {

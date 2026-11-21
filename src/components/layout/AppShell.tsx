@@ -37,19 +37,19 @@ export const AppShell: React.FC<AppShellProps> = ({ currentRole, onRoleChange })
         {/* Content Column */}
         <main className="flex-1 flex flex-col h-[calc(100vh-38px)] overflow-y-auto">
           {/* Top Bar */}
-          <header className="h-16 border-b-2 border-wt-white bg-wt-black/90 backdrop-blur-md px-6 flex items-center justify-between sticky top-0 z-20">
-            <div className="flex items-center gap-4">
-              <h1 className="font-display text-2xl tracking-tight text-wt-white font-black uppercase flex items-center gap-2">
-                <span className="w-2 h-5 bg-wt-yellow inline-block" />
-                {activePage}
+          <header className="h-16 border-b-2 border-wt-white bg-wt-black/90 backdrop-blur-md px-4 sm:px-6 md:px-8 flex items-center justify-between sticky top-0 z-20 shrink-0">
+            <div className="flex items-center gap-4 shrink-0">
+              <h1 className="font-display text-xl sm:text-2xl tracking-tight text-wt-white font-black uppercase flex items-center gap-2 whitespace-nowrap shrink-0">
+                <span className="w-2 h-5 bg-wt-yellow inline-block shrink-0" />
+                <span>{activePage}</span>
               </h1>
-              <span className="font-mono text-[10px] text-wt-gray hidden sm:inline-block uppercase tracking-widest border border-wt-gray/40 px-2 py-0.5">
+              <span className="font-mono text-[10px] text-wt-gray hidden sm:inline-block uppercase tracking-widest border border-wt-gray/40 px-2 py-0.5 whitespace-nowrap shrink-0">
                 ROLE: {currentRole}
               </span>
             </div>
 
             {/* Quick Actions & Command Bar */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 shrink-0 mr-1 sm:mr-2">
               <button
                 onClick={() => navigate('/app/ai')}
                 className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-wt-black border border-wt-white/40 text-wt-gray hover:text-wt-white hover:border-wt-white text-xs font-mono transition-colors"

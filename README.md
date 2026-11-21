@@ -1,106 +1,165 @@
-# WORKTAK // CONTROL ROOM
-### Autonomous Enterprise Management & Biometric Intelligence Platform
-**Hackathon Track:** Artificial Intelligence & Machine Learning  
-**Target Environment:** `http://localhost:3002` (Unified Node + Express TypeScript & Vite SPA)
+# WORKTAK — Autonomous AI & Biometric Company Management Platform
+
+[![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen?style=for-the-badge)](http://localhost:3002)
+[![Port](https://img.shields.io/badge/Port-3002%20(Strict)-red?style=for-the-badge)](http://localhost:3002)
+[![AI Engine](https://img.shields.io/badge/AI-Google%20Gemini%202.5%20Flash-yellow?style=for-the-badge)](https://ai.google.dev/)
+[![Biometrics](https://img.shields.io/badge/Biometrics-128--D%20Embeddings%20(Zero%20Photos)-blue?style=for-the-badge)](https://github.com/vladmandic/face-api)
+[![Audit](https://img.shields.io/badge/Audit-SHA--256%20Hash%20Chaining-black?style=for-the-badge)](http://localhost:3002/app/security)
+[![Integrations](https://img.shields.io/badge/Integrations-Slack%20%7C%20Google%20%7C%20RazorpayX%20%7C%20ZKTeco-orange?style=for-the-badge)](http://localhost:3002/app/integrations)
 
 ---
 
+## ⚡ Overview & Vision
+
+**WorkTak** is an autonomous, high-contrast **cyber-brutalist company management platform** built for high-throughput enterprises. It unifies biometric attendance verification, role-scoped AI query assistance, automated payroll with real-time Loss-of-Pay (LOP) calculation, AI-driven document OCR verification, tamper-evident cryptographic audit logs, and an extensible **App Integrations Hub** (Slack, Google Workspace, RazorpayX, ZKTeco hardware, and custom webhooks).
+
+WorkTak runs strictly on a **single unified server at `http://localhost:3002`** (Node.js + Express TypeScript serving API endpoints under `/api` and Vite React SPA in middleware mode with strict port collision enforcement).
+
 ```
-                                  WORKTAK ARCHITECTURE
-┌────────────────────────────────────────────────────────────────────────────────────────┐
-│                                 WEB CLIENT (REACT 19 + VITE)                           │
-│  - Cyber-Brutalist Glassmorphism Interface (Tokens: Red, Yellow, Black, White)         │
-│  - @vladmandic/face-api (TensorFlow.js 128-D Biometric Extraction in Browser)          │
-│  - Role Guards & Scoped Navigation (ADMIN, HR, FINANCE, MANAGER, EMPLOYEE)             │
-└───────────────────────────────────────────┬────────────────────────────────────────────┘
-                                            │ httpOnly Session Cookie & REST / SSE
-                                            ▼
-┌────────────────────────────────────────────────────────────────────────────────────────┐
-│                              UNIFIED BACKEND ENGINE (NODE 20 + TS)                     │
-│  - Strict Single-Port Architecture: Port 3002 (Fail-Loud Collision Detection)          │
-│  - Google OAuth 2.0 Code Flow (/api/auth/google/callback) with Invite-Only Gate        │
-│  - Biometric Nonce & Liveness Engine (Single-Use Anti-Replay Defense)                  │
-│  - TAK//AI Assistant (Whitelisted Read-Only Tool Execution, Role Scope Guard)          │
-│  - Statistical Anomaly Detection & Immutable SHA-256 Hash Chain Verification           │
-└──────────────────────┬───────────────────────────────────┬─────────────────────────────┘
-                       │                                   │
-                       ▼                                   ▼
-        ┌──────────────────────────────┐    ┌──────────────────────────────┐
-        │  SUPABASE / POSTGRES SCHEMA  │    │  GOOGLE AI STUDIO (GEMINI)   │
-        │  - Multi-Tenant company_id   │    │  - Gemini 2.5 Flash Adapter  │
-        │  - Row-Level Security (RLS)  │    │  - Tool Call Synthesis       │
-        │  - Vector (128-D Embeddings) │    │  - Document Field OCR        │
-        └──────────────────────────────┘    └──────────────────────────────┘
+                                      WORKTAK SYSTEM TOPOLOGY
+  ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
+  │                                    CYBER CLIENT SPA (REACT 19)                              │
+  │  - Brutalist Cyber Interface (Strict 4-Color Palette: Red #E50914, Yellow #FFD700, #000, #FFF)│
+  │  - Client-Side Biometrics (@vladmandic/face-api 128-D Euclidean distance vector extraction) │
+  │  - Role Guards & Scoped Navigation (ADMIN, HR, FINANCE, MANAGER, EMPLOYEE)                  │
+  └──────────────────────────────────────────────┬──────────────────────────────────────────────┘
+                                                 │ httpOnly Session Cookie (worktak_session)
+                                                 ▼
+  ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
+  │                             UNIFIED EXPRESS BACKEND (NODE 20 + TS)                          │
+  │  - Single Server Port 3002 (Express + Vite Middleware Mode, Fail-Loud Collision Detection)   │
+  │  - Google OAuth 2.0 Code Flow (/api/auth/google/callback) with Invite-Only RBAC Gate        │
+  │  - Biometric Nonce Engine: 30s TTL, single-use anti-replay defense, liveness blink/yaw      │
+  │  - TAK AI Assistant: Role-permission-guarded, whitelisted read-only tool calling            │
+  │  - Statistical Anomaly Detection (z-score check-ins, late streaks, payroll deltas >25%)     │
+  │  - Immutable Cryptographic Hash Chain: SHA-256 blocks chained back to genesis               │
+  └──────────────┬───────────────────────────────┬───────────────────────────────┬──────────────┘
+                 │                               │                               │
+                 ▼                               ▼                               ▼
+  ┌──────────────────────────────┐┌──────────────────────────────┐┌──────────────────────────────┐
+  │      DATABASE LAYER          ││   GOOGLE AI STUDIO (GEMINI)  ││   APP INTEGRATIONS HUB       │
+  │ - Dual Seam: Supabase/Local  ││ - Gemini 2.5 Flash Adapter   ││ - Slack Channel Webhooks     │
+  │ - Multi-Tenant company_id    ││ - Whitelisted Tool Calling   ││ - Google Calendar / Drive    │
+  │ - Row-Level Security (RLS)   ││ - Zero-Hallucination Numbers ││ - RazorpayX Direct Payouts   │
+  │ - 128-D pgvector Embeddings  ││ - Document OCR Verification  ││ - ZKTeco Hardware Turnstiles │
+  └──────────────────────────────┘└──────────────────────────────┘└──────────────────────────────┘
 ```
-
----
-
-## ⚡ Core Problem & Solution
-
-Traditional small-to-midsize companies manage HR, operations, and payroll across disconnected spreadsheets and messaging channels. Attendance suffers from buddy punching, reports require manual analyst overhead, sensitive documents are chased over chat, and managers cannot query telemetry without SQL skills.
-
-**WorkTak** resolves this with a unified, high-contrast **cyber-brutalist control room**:
-1. **Trustworthy Attendance:** Guided 5-frame enrollment and real-time liveness challenges (random server nonces, blink counter, head-turn yaw detection).
-2. **Zero Photo Storage:** Photos never leave client memory; only anonymous mathematical 128-dimensional L2-normalized float embeddings are processed.
-3. **TAK//AI Intelligence Layer:** Chat copilot and executive report generator powered by Gemini 2.5 Flash utilizing whitelisted read-only tools. Permission guardrails enforce that employees cannot access corporate secrets.
-4. **Automated Compensations:** Attendance-driven loss-of-pay (LOP) deduction calculator, PF, tax deductions, and branded PDF payslips.
-5. **Cryptographic Integrity:** Tamper-evident SHA-256 hash chaining on all critical corporate actions with one-click chain validation.
 
 ---
 
 ## 🛡️ Role-Based Permission Matrix
 
-WorkTak features 5 tailored operational workspaces enforced at both UI route guards and backend API middleware:
+Every endpoint, view, and AI tool execution enforces strict Role-Based Access Control (RBAC):
 
-| Feature / Workspace | ADMIN | HR | FINANCE | MANAGER | EMPLOYEE |
+| Feature / Capability | ADMIN | HR | FINANCE | MANAGER | EMPLOYEE |
 |---|:---:|:---:|:---:|:---:|:---:|
-| **Control Dashboard** | Full Corporate KPI | Workforce & Docs | Ledger & Payroll Run | Team Presence & Approvals | Self Status & Leave Balances |
-| **Employee Directory** | Full CRUD | Full CRUD | Read-Only | Read Team | — |
-| **Face Biometric Scan** | Verify & Delete Any | Enroll & Verify | Verify | Verify Team | Self Verify & Delete |
-| **Attendance Logs** | All Logs + Export | All Logs + Manual Decide | Read All | Team + Manual Decide | Self Logs Only |
-| **Leave Management** | Override & View All | Full Approvals | Read All | Approve Team Leaves | Apply & View Own |
-| **Payroll Runs** | Final Approval & Disburse | — | Prepare DRAFT Runs | — | — |
-| **Official Payslips** | Company All | — | Company All | — | View Own Only |
-| **AI Document OCR** | Full Queue & Verify | Full Queue & Verify | — | — | Upload & View Own |
-| **TAK//AI Scope** | Company-Wide | People & Attendance | Financial Data | Team Scoped | Restricted to Self Records |
-| **Security & Hash Chain**| Tamper Verification | Anomaly Review | — | — | — |
+| **Executive Dashboard** | Full Corporate Telemetry | Workforce & KYC Health | Payroll Ledger & Cashflow | Team Presence & Approvals | Personal Attendance & Balances |
+| **Employee Directory** | Full CRUD + Roster Invite | Full CRUD + Roster Invite | Read-Only Roster | Read Department Team | Self Profile Only |
+| **Face Biometric Check-In** | Verify & Delete Any | Enroll & Verify | Verify | Verify Team | Self Verify & Re-enroll |
+| **Attendance Logs** | All Company Logs | Logs + Manual Overrides | Read All | Team + Manual Overrides | Self Logs Only |
+| **Leave Management** | Override & View All | Full Approval Queue | Read-Only | Approve Team Leaves | Apply & View Balance |
+| **Payroll Engine** | Final Approval & Disburse | — | Prepare DRAFT Runs | — | — |
+| **Official Payslips** | All Employee PDF Slips | — | All Employee PDF Slips | — | View Own Payslip PDF |
+| **Document AI (OCR)** | Full Queue & Verify | Full Queue & Verify | — | — | Upload & View Own Status |
+| **TAK AI Scope** | Company-Wide Tool Calling | Headcount & Attendance | Payroll & Department Costs| Team Scoped | Restricted to Personal Data |
+| **Security & Hash Chain** | Full Audit Ledger & Verify | Anomaly Review | — | — | — |
+| **App Integrations Hub** | Full Configuration | Manage Slack & Google | Manage Banking APIs | View Synced Feeds | — |
 
 ---
 
-## 🔬 AI & Machine Learning Specifications
+## 🔬 Core Innovations & AI/ML Architecture
 
 ### 1. Biometric Liveness & Verification Engine
-- **Descriptor Extraction:** Uses `@vladmandic/face-api` (Tiny Face Detector + 68 Facial Landmarks + Face Recognition net) in the client browser.
-- **5-Frame Quality Gates:** Frame height >= 25%, detection score >= 0.80, luminance variance checks, and frontal yaw within $\pm 15^\circ$.
-- **Liveness Challenge Nonce:** Server issues a single-use random UUID nonce with 30s TTL. Client detects random challenge action (`BLINK_2`, `TURN_LEFT`, `TURN_RIGHT`) before sampling 3 consecutive verification frames.
-- **Matching Distance:** Evaluates 128-dimensional Euclidean distance against registered vector profile:
-  $$\text{dist} = \sqrt{\sum_{i=1}^{128} (u_i - v_i)^2}$$
-  Matches accepted when $\text{dist} < 0.50$; confidence scored as $\text{clamp}(1 - \frac{\text{dist}}{0.60}, 0, 1)$. Single-use nonce invalidation defends against replay attacks.
+- **Browser-Side Vector Extraction:** Client loads `@vladmandic/face-api` (Tiny Face Detector + 68 Facial Landmarks + Face Recognition net) from `public/models/`.
+- **Zero Raw Photos Stored:** Video streams and photo frames never touch backend storage or networks. Only anonymous 128-dimensional floating point descriptor arrays are transmitted.
+- **Single-Use Anti-Replay Nonce:** The server issues a cryptographically random UUID nonce with a 30-second TTL. Nonces are invalidated on consumption, defeating video replay and photo injection attacks.
+- **Dynamic Liveness Challenge:** The client randomly prompts for physical actions (`BLINK TWICE`, `TURN HEAD LEFT`, `TURN HEAD RIGHT`) before sampling verification frames.
+- **Euclidean L2 Matching:**
+  $$\text{distance} = \sqrt{\sum_{i=1}^{128} (u_i - v_i)^2}$$
+  Matches are confirmed when $\text{distance} \le 0.50$; confidence is calculated as $\text{clamp}(1 - \frac{\text{dist}}{0.60}, 0, 1) \times 100\%$.
 
-### 2. TAK//AI Copilot & Whitelisted Tools
-- **Model:** Google Gemini 2.5 Flash via Google AI Studio API (`LLM_API_KEY`).
+### 2. Guardrailed TAK AI Assistant
+- **Engine:** Google Gemini 2.5 Flash via Google AI Studio API (`LLM_API_KEY`).
 - **Whitelisted Read-Only Tools:** `get_headcount`, `get_attendance_summary`, `get_late_comers`, `get_leave_balance`, `get_pending_leaves`, `get_payroll_summary`, `get_payroll_by_department`, `get_risk_signals`, `get_my_profile`.
-- **Zero Raw SQL Access:** Model queries execute strictly through user-scoped typed handlers. Numbers in answers are anchored to tool data to eradicate numerical hallucinations.
-- **Source Verification:** Every answer renders clickable verification chips citing exact tools and data timestamps.
-- **Safety Refusals:** When an `EMPLOYEE` prompts for company payroll or cross-employee attendance, the assistant politely refuses based on assigned permissions.
+- **Zero Raw Database Queries:** The model has zero SQL/DB access. Tool results are formatted deterministically before generation to guarantee zero numerical hallucinations.
+- **Strict Permission Guardrails:** If an `EMPLOYEE` asks for corporate payroll, department salaries, or company-wide late arrivals, the request is blocked by policy before tool execution.
 
-### 3. Explainable Statistical Anomaly Detection
-- **Check-in Outliers:** Per-employee z-score calculation of arrival minutes vs personal 30-day mean: $|z| > 2.5$ flags alert.
-- **Late Streaks:** Flags employees with $\ge 3$ late arrivals within a 5-day rolling window.
-- **Payroll Delta Flag:** Alerts whenever net compensation fluctuates $>25\%$ from previous cycle without a base revision.
+### 3. Automated Payroll with Attendance LOP
+- **Loss-of-Pay (LOP) Computation:** Automatically deducts unapproved absences from monthly compensation based on immutable biometric attendance logs:
+  $$\text{LOP Deduction} = \frac{\text{Gross Salary}}{\text{Working Days}} \times \text{Unexcused Days}$$
+- **State Machine Workflow:** `DRAFT` (Finance preps) $\to$ `SUBMITTED` $\to$ `APPROVED` (Admin signs) $\to$ `PAID` (Direct bank disbursement).
+- **Salary Delta Anomaly Flag:** Flags any employee whose net pay deviates $>25\%$ from the prior cycle without an approved base salary revision.
+- **Official PDF Payslips:** Generates branded, verifiable pay statements detailing Basic, HRA, Allowances, PF (12%), PT, and LOP deductions.
 
-### 4. Cryptographic SHA-256 Audit Hash Chain
-- Every audit entry hashes the preceding block's digest:
+### 4. Document AI (KYC & Identity OCR)
+- Supports Aadhaar, PAN Card, and Passport uploads.
+- Auto-extracts employee name, masked ID number (`XXXXXX4812`), DOB, and validity dates.
+- Compares extracted metadata against the registered employee directory profile and scores match confidence ($>90\%$ for verified status).
+
+### 5. Cryptographic SHA-256 Audit Hash Chain
+- Every critical operational event (Login, Biometric Enrollment, Attendance Check-In, Leave Approval, Payroll Disbursement, Document Verification) is committed as an immutable block:
   $$\text{hash}_n = \text{SHA-256}(\text{hash}_{n-1} \parallel \text{company\_id} \parallel \text{actor} \parallel \text{action} \parallel \text{entity} \parallel \text{entity\_id} \parallel \text{metadata} \parallel \text{created\_at})$$
 - One-click `[ VERIFY INTEGRITY CHAIN ]` walks the ledger back to genesis (`GENESIS_HASH_WORKTAK_000`) and pinpoints any row tampering.
 
+### 6. App Integrations Hub & Webhooks
+Connects WorkTak to third-party tools:
+- **Slack Workspaces:** Real-time channel broadcasts for daily attendance roll-calls (`#attendance-alerts`), leave requests, and payroll disbursements.
+- **Google Workspace & Calendar:** Bi-directional sync of approved team leaves to company Google Calendars and automatic archiving of KYC identity documents into Google Drive.
+- **Microsoft Teams:** Adaptive Cards for manager one-tap leave authorizations.
+- **RazorpayX / Stripe Banking API:** Automated direct bank transfers for approved payroll cycles.
+- **ZKTeco Biometric Hardware:** On-premise optical/RFID turnstile gate ingestion via TCP/REST webhooks.
+- **Custom Outgoing Webhooks:** HTTPS webhook callbacks signed with HMAC-SHA256 secrets for real-time company events.
+- **Scoped API Tokens:** Bearer tokens for external scripts, microservices, and turnstiles.
+
 ---
 
-## 🚀 Quickstart & Setup
+## 🔌 API Endpoint Catalog
 
-### Requirements
-- Node.js $\ge 20$
-- npm $\ge 10$
+| Method | Endpoint | Allowed Roles | Description |
+|---|---|---|---|
+| `GET` | `/api/health` | Public | System status, port confirmation, and timestamp |
+| `POST` | `/api/auth/google` | Public | Initiates Google OAuth 2.0 authorization code flow |
+| `GET` | `/api/auth/google/callback` | Public | Handles OAuth return, matches invited employee, sets session cookie |
+| `POST` | `/api/auth/demo-switch` | Public (Dev) | Instant role switcher session generator for testing |
+| `GET` | `/api/auth/session` | Authenticated | Validates session token and returns current user payload |
+| `POST` | `/api/auth/logout` | Authenticated | Clears `worktak_session` cookie and logs audit event |
+| `POST` | `/api/face/challenge` | Authenticated | Generates 30s single-use nonce & liveness challenge action |
+| `POST` | `/api/face/verify` | Authenticated | Verifies 128-D descriptor, invalidates nonce, commits attendance |
+| `POST` | `/api/face/enroll` | Authenticated | Registers 5-frame averaged 128-D biometric template |
+| `DELETE`| `/api/face/delete` | Authenticated | Deletes biometric embedding for user (right to erasure) |
+| `GET` | `/api/attendance/logs` | Scoped | Retrieves attendance history (scoped by employee / team / company) |
+| `POST` | `/api/attendance/manual-request`| Authenticated | Submits manual check-in request with reason for manager approval |
+| `GET` | `/api/leaves/balances` | Authenticated | Returns annual leave balances (Casual, Sick, Earned, Unpaid) |
+| `POST` | `/api/leaves/apply` | Authenticated | Applies for leave with quota deduction validation |
+| `POST` | `/api/leaves/decide` | ADMIN, HR, MGR | Approves or rejects a pending leave application |
+| `GET` | `/api/payroll/current` | ADMIN, FINANCE | Returns current month payroll cycle with LOP deductions |
+| `POST` | `/api/payroll/transition` | ADMIN, FINANCE | Advances payroll stage: `DRAFT` $\to$ `SUBMITTED` $\to$ `APPROVED` $\to$ `PAID` |
+| `GET` | `/api/payroll/payslips` | Scoped | Returns official payslips (company-wide or self-only) |
+| `POST` | `/api/documents/upload` | Authenticated | Ingests document image and triggers AI OCR field extraction |
+| `POST` | `/api/documents/:id/verify` | ADMIN, HR | Marks extracted document as VERIFIED or REJECTED |
+| `POST` | `/api/ai/chat` | Authenticated | Executes whitelisted read-only tools and synthesizes answer |
+| `POST` | `/api/ai/report` | ADMIN, HR, FIN, MGR | Synthesizes comprehensive executive intelligence report |
+| `GET` | `/api/security/signals` | ADMIN, HR | Lists open statistical anomaly detection risk signals |
+| `GET` | `/api/security/audit` | ADMIN | Returns immutable audit log ledger |
+| `GET` | `/api/security/audit/verify` | ADMIN | Performs cryptographic SHA-256 hash chain verification back to genesis |
+| `GET` | `/api/integrations` | Authenticated | Lists all connected apps, sync statuses, and telemetry |
+| `POST` | `/api/integrations/:id/toggle` | ADMIN, HR, FIN | Enables or disables an external app integration |
+| `POST` | `/api/integrations/:id/test` | ADMIN, HR, FIN | Executes live remote handshake test and returns latency |
+| `GET` | `/api/integrations/webhooks` | Authenticated | Lists registered outgoing webhook pipelines |
+| `POST` | `/api/integrations/webhooks` | ADMIN | Registers a new HTTPS webhook destination |
+| `POST` | `/api/integrations/webhooks/:id/test` | ADMIN | Dispatches a simulated test event ping |
+| `GET` | `/api/integrations/api-keys` | ADMIN | Lists issued API Bearer tokens |
+| `POST` | `/api/integrations/api-keys` | ADMIN | Generates a new scoped API access token |
+| `DELETE`| `/api/integrations/api-keys/:id` | ADMIN | Revokes an API access token |
+
+---
+
+## 🚀 Quickstart & Setup Guide
+
+### System Requirements
+- **Node.js:** $\ge 20.0.0$
+- **npm:** $\ge 10.0.0$
+- **Web Browser:** Chrome, Edge, or Firefox with camera permissions enabled for biometric features.
 
 ### 1. Clone & Install
 ```bash
@@ -112,15 +171,18 @@ npm install
 ### 2. Environment Configuration
 Create a `.env` file in the root directory (refer to `.env.example`):
 ```env
+# Strict Port Specification (Must be 3002)
 PORT=3002
 NODE_ENV=development
-SESSION_SECRET=worktak_super_secret_session_key_2026_dev_mode
+SESSION_SECRET=worktak_production_grade_secret_session_2026
 
 # Google Cloud Console OAuth 2.0
+# Authorised JavaScript origin: http://localhost:3002
+# Authorised redirect URI:      http://localhost:3002/api/auth/google/callback
 GOOGLE_CLIENT_ID=your_google_client_id.apps.googleusercontent.com
 GOOGLE_CLIENT_SECRET=your_google_client_secret
 
-# Supabase Postgres & Storage
+# Supabase Postgres & Storage (Dual-Seam Architecture)
 SUPABASE_URL=https://your-project.supabase.co
 SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
@@ -130,7 +192,7 @@ LLM_PROVIDER=gemini
 LLM_API_KEY=your_gemini_api_key
 LLM_MODEL=gemini-2.5-flash
 
-# Biometric Verification
+# Biometric Verification Configuration
 FACE_MATCH_THRESHOLD=0.50
 FACE_MARGIN=0.05
 FACE_LOCKOUT_MINUTES=15
@@ -144,19 +206,20 @@ WorkTak strictly initializes at: **`http://localhost:3002`**
 
 ---
 
-## 🎯 Testing & Evaluation Guide
+## 🎯 Evaluator Walkthrough & Testing Scenarios
 
-| Scenario | What to Click / Inspect | Expected Result |
-|---|---|---|
-| **1. Landing Page** | Open `http://localhost:3002/` | Glitch hero, scanline HUD preview, hazard stripes, dark cyber grid. |
-| **2. Role Isolation** | On `/login`, click **`EMPLOYEE (SELF)`** | Lands on Employee dashboard. Notice **PAYROLL** and **SECURITY** are absent from sidebar. |
-| **3. RBAC Route Guard** | Type `http://localhost:3002/app/payroll` | Blocked immediately with `403 FORBIDDEN` access denied screen. |
-| **4. Face Check-In** | Navigate to `/app/check-in` & click `[ START SCAN ]` | Liveness prompt appears (`BLINK TWICE` or `TURN HEAD`). 128-D descriptor verified and logged in attendance records. |
-| **5. AI Permission Guard** | Under `/app/ai`, ask *"What is company payroll?"* | TAK//AI politely refuses due to employee permission scope. |
-| **6. Admin Workflows** | Switch role to **`ADMIN`** via sidebar selector | Unlocks full controls: People roster, Leave approvals, Payroll approval, AI Report Generator, and Security audit chain. |
-| **7. Hash Chain Verify** | Open `/app/security` & click `[ VERIFY INTEGRITY CHAIN ]` | Validates entire SHA-256 block ledger and displays `CHAIN INTACT`. |
+| Step | Action | Route | What to Verify |
+|:---:|---|---|---|
+| **1** | **Landing Page** | `/` | Cyber-brutalist theme, marquee ticker, HUD feature pillars. |
+| **2** | **Role Switching** | `/login` | Use bottom quick-switchers to test **Admin**, **HR**, **Finance**, **Manager**, or **Employee**. |
+| **3** | **Biometric Check-In** | `/app/check-in` | Click `[ START SCAN ]`. Observe single-use nonce issuance, random liveness challenge (`BLINK TWICE` or `TURN HEAD`), and 128-D Euclidean vector matching. |
+| **4** | **Leave Balance & Application** | `/app/leaves` | Apply for Casual Leave. Observe annual quota checks, real-time balance reduction, and manager approval queues. |
+| **5** | **Payroll & LOP Engine** | `/app/payroll` | Switch to **Finance** or **Admin**. Review attendance-driven LOP deductions, advance workflow to `APPROVED`, and inspect PDF payslip generation under `/app/payslips`. |
+| **6** | **AI Assistant & Permission Guard** | `/app/ai` | Ask: *"Who was late more than 3 times this month?"* or *"What is our payroll cost by department?"*. As an Employee, ask for corporate payroll to verify the RBAC safety refusal guardrail. |
+| **7** | **Cryptographic Audit Chain** | `/app/security` | Click `[ VERIFY INTEGRITY CHAIN ]`. Observe SHA-256 blocks validated back to genesis with zero tampering. |
+| **8** | **App Integrations Hub** | `/app/integrations` | Test Slack handshake ping, view active Google Calendar and ZKTeco connectors, trigger a test webhook dispatch, and generate a scoped API token. |
 
 ---
 
 ## 📄 License
-MIT License. Built for the Hackathon Track: **Artificial Intelligence and Machine Learning**.
+MIT License. Developed for the Hackathon Track: **Artificial Intelligence and Machine Learning**.
