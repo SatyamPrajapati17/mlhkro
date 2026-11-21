@@ -33,6 +33,14 @@ export const FaceEnrollPage: React.FC = () => {
     }
   };
 
+  // Ensure camera stream binds immediately when video mounts
+  useEffect(() => {
+    if (videoRef.current && streamRef.current && videoRef.current.srcObject !== streamRef.current) {
+      videoRef.current.srcObject = streamRef.current;
+      videoRef.current.play().catch((err) => console.log('Camera playback error:', err));
+    }
+  }, [step]);
+
   const handleAgreeConsent = async () => {
     if (!consentAccepted) return;
     try {
@@ -47,15 +55,23 @@ export const FaceEnrollPage: React.FC = () => {
 
   const startCamera = async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { width: 640, height: 480, facingMode: 'user' },
-      });
+      let stream: MediaStream;
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { width: { ideal: 640 }, height: { ideal: 480 }, facingMode: 'user' },
+          audio: false,
+        });
+      } catch (e) {
+        stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+      }
+
       streamRef.current = stream;
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
+        videoRef.current.play().catch(console.error);
       }
     } catch (err: any) {
-      setStatusMessage('Camera denied. Please permit camera access.');
+      setStatusMessage('Camera access denied or unavailable. Please permit webcam access.');
     }
   };
 
@@ -230,7 +246,19 @@ export const FaceEnrollPage: React.FC = () => {
       {(step === 2 || step === 3) && (
         <GlassCard variant="yellow" hud className="p-6 bg-wt-black/95 text-center space-y-6">
           <div className="relative w-full max-w-lg mx-auto aspect-video bg-wt-black border-3 border-wt-white overflow-hidden shadow-hardW">
-            <video ref={videoRef} autoPlay playsInline muted className="w-full h-full object-cover mirror" />
+            <video
+              ref={(el) => {
+                videoRef.current = el;
+                if (el && streamRef.current && el.srcObject !== streamRef.current) {
+                  el.srcObject = streamRef.current;
+                  el.play().catch((err) => console.log('Enroll camera playback:', err));
+                }
+              }}
+              autoPlay
+              playsInline
+              muted
+              className="w-full h-full object-cover mirror"
+            />
             <div className="scanline-overlay" />
 
             {/* 5-segment progress bar */}

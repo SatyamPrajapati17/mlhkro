@@ -25,16 +25,29 @@ import {
   MessageSquare,
   Banknote,
   FileSpreadsheet,
-  Globe
+  Globe,
+  Search,
+  Layers,
+  Code2,
+  Building2,
+  Lock,
+  GitBranch,
+  ScanFace,
+  Camera
 } from 'lucide-react';
+import { ConnectedApp } from '../../../server/routes/integrations';
 
 export const IntegrationsPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'APPS' | 'WEBHOOKS' | 'KEYS'>('APPS');
-  const [apps, setApps] = useState<any[]>([]);
+  const [apps, setApps] = useState<ConnectedApp[]>([]);
   const [webhooks, setWebhooks] = useState<any[]>([]);
   const [apiKeys, setApiKeys] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [testResult, setTestResult] = useState<any | null>(null);
+
+  // Filters
+  const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
+  const [searchQuery, setSearchQuery] = useState('');
 
   // New Webhook Modal State
   const [webhookModalOpen, setWebhookModalOpen] = useState(false);
@@ -167,52 +180,67 @@ export const IntegrationsPage: React.FC = () => {
       case 'slack': return <MessageSquare className="w-6 h-6 text-wt-yellow" />;
       case 'google_workspace': return <Calendar className="w-6 h-6 text-wt-white" />;
       case 'teams': return <MessageSquare className="w-6 h-6 text-wt-red" />;
+      case 'discord': return <MessageSquare className="w-6 h-6 text-wt-yellow" />;
       case 'razorpayx': return <Banknote className="w-6 h-6 text-wt-yellow" />;
+      case 'stripe': return <Banknote className="w-6 h-6 text-wt-white" />;
+      case 'quickbooks': return <FileSpreadsheet className="w-6 h-6 text-wt-red" />;
+      case 'tally': return <Building2 className="w-6 h-6 text-wt-yellow" />;
       case 'zkteco': return <Cpu className="w-6 h-6 text-wt-red" />;
-      case 'quickbooks': return <FileSpreadsheet className="w-6 h-6 text-wt-white" />;
+      case 'suprema': return <ScanFace className="w-6 h-6 text-wt-yellow" />;
+      case 'hikvision': return <Camera className="w-6 h-6 text-wt-white" />;
+      case 'github': return <GitBranch className="w-6 h-6 text-wt-white" />;
+      case 'notion': return <Layers className="w-6 h-6 text-wt-yellow" />;
+      case 'jira': return <Code2 className="w-6 h-6 text-wt-red" />;
       default: return <Globe className="w-6 h-6 text-wt-yellow" />;
     }
   };
 
   const connectedCount = apps.filter((a) => a.status === 'CONNECTED').length;
 
+  const filteredApps = apps.filter((app) => {
+    const matchesCategory = selectedCategory === 'ALL' || app.category === selectedCategory;
+    const matchesQuery = app.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                         app.description.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesQuery;
+  });
+
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-wt-white/20 pb-4">
         <div>
-          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">ECOSYSTEM & EXTERNAL SERVICES</div>
+          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">ECOSYSTEM & EXTERNAL CONNECTORS</div>
           <h2 className="font-display text-3xl font-black text-wt-white uppercase">APP INTEGRATIONS & WEBHOOKS</h2>
         </div>
         <div className="flex items-center gap-3">
-          <Badge status="ACTIVE" label={`${connectedCount} OF ${apps.length} CONNECTED`} size="md" />
+          <Badge status="ACTIVE" label={`${connectedCount} OF ${apps.length} BRIDGES ACTIVE`} size="md" />
         </div>
       </div>
 
       {/* KPI Overview Tiles */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <GlassCard variant="yellow" hud className="p-4 bg-wt-black/90 font-mono">
-          <div className="text-[10px] text-wt-gray uppercase font-bold">CONNECTED APPS</div>
+          <div className="text-[10px] text-wt-gray uppercase font-bold">CONNECTED BRIDGES</div>
           <div className="text-2xl font-black text-wt-yellow mt-1">{connectedCount} / {apps.length}</div>
-          <div className="text-[10px] text-wt-gray mt-1">Enterprise Bridges</div>
+          <div className="text-[10px] text-wt-gray mt-1">Active Cloud Integrations</div>
         </GlassCard>
 
         <GlassCard variant="white" hud className="p-4 bg-wt-black/90 font-mono">
           <div className="text-[10px] text-wt-gray uppercase font-bold">OUTGOING WEBHOOKS</div>
-          <div className="text-2xl font-black text-wt-white mt-1">{webhooks.length} ACTIVE</div>
-          <div className="text-[10px] text-wt-gray mt-1">99.8% Delivery Rate</div>
+          <div className="text-2xl font-black text-wt-white mt-1">{webhooks.length} ENDPOINTS</div>
+          <div className="text-[10px] text-wt-gray mt-1">99.8% Handshake Success</div>
         </GlassCard>
 
         <GlassCard variant="red" hud className="p-4 bg-wt-black/90 font-mono">
           <div className="text-[10px] text-wt-gray uppercase font-bold">EVENTS DISPATCHED</div>
-          <div className="text-2xl font-black text-wt-red mt-1">6,930</div>
-          <div className="text-[10px] text-wt-gray mt-1">Today across all apps</div>
+          <div className="text-2xl font-black text-wt-red mt-1">9,410</div>
+          <div className="text-[10px] text-wt-gray mt-1">Today across all bridges</div>
         </GlassCard>
 
         <GlassCard variant="yellow" hud className="p-4 bg-wt-black/90 font-mono">
-          <div className="text-[10px] text-wt-gray uppercase font-bold">ACTIVE API KEYS</div>
+          <div className="text-[10px] text-wt-gray uppercase font-bold">ACTIVE API TOKENS</div>
           <div className="text-2xl font-black text-wt-yellow mt-1">{apiKeys.length} ISSUED</div>
-          <div className="text-[10px] text-wt-gray mt-1">Scoped Machine Tokens</div>
+          <div className="text-[10px] text-wt-gray mt-1">Machine & Hardware Keys</div>
         </GlassCard>
       </div>
 
@@ -226,7 +254,7 @@ export const IntegrationsPage: React.FC = () => {
             <div>
               <div className="font-bold uppercase text-wt-white text-sm">{testResult.message}</div>
               <div className="text-wt-gray text-[11px] mt-0.5">
-                Latency: <span className="text-wt-yellow font-bold">{testResult.latencyMs || testResult.deliveryLatencyMs}ms</span> · Status: {testResult.httpStatus || 200} OK
+                Latency: <span className="text-wt-yellow font-bold">{testResult.latencyMs || testResult.deliveryLatencyMs}ms</span> · Protocol: {testResult.protocol || 'HTTPS TLS 1.3'}
               </div>
             </div>
           </div>
@@ -239,9 +267,9 @@ export const IntegrationsPage: React.FC = () => {
       {/* Tabs */}
       <Tabs
         tabs={[
-          { id: 'APPS', label: 'CONNECTED APPS', count: apps.length },
-          { id: 'WEBHOOKS', label: 'OUTGOING WEBHOOKS', count: webhooks.length },
-          { id: 'KEYS', label: 'API TOKENS', count: apiKeys.length },
+          { id: 'APPS', label: `CONNECTED APPS (${apps.length})`, count: apps.length },
+          { id: 'WEBHOOKS', label: `OUTGOING WEBHOOKS (${webhooks.length})`, count: webhooks.length },
+          { id: 'KEYS', label: `API ACCESS TOKENS (${apiKeys.length})`, count: apiKeys.length },
         ]}
         activeTab={activeTab}
         onChange={(id) => setActiveTab(id as any)}
@@ -249,60 +277,95 @@ export const IntegrationsPage: React.FC = () => {
 
       {/* TAB 1: CONNECTED APPS */}
       {activeTab === 'APPS' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {apps.map((app) => {
-            const isConnected = app.status === 'CONNECTED';
-            return (
-              <GlassCard
-                key={app.id}
-                variant={isConnected ? 'yellow' : 'white'}
-                hud
-                className="p-6 bg-wt-black/95 font-mono space-y-4 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-start justify-between gap-3 pb-3 border-b border-wt-white/20">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 border-2 border-wt-white bg-wt-black shrink-0">
-                        {getAppIcon(app.id)}
+        <div className="space-y-6">
+          {/* Category Filter Pills & Search */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-1.5 flex-wrap">
+              {[
+                { id: 'ALL', label: 'ALL APPS' },
+                { id: 'COMMUNICATION', label: 'COMMUNICATION' },
+                { id: 'FINANCE', label: 'FINANCE & PAYROLL' },
+                { id: 'HARDWARE', label: 'HARDWARE & BIOMETRICS' },
+                { id: 'PRODUCTIVITY', label: 'PRODUCTIVITY & DEV' },
+              ].map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => setSelectedCategory(cat.id)}
+                  className={`px-3 py-1.5 font-mono text-xs font-bold uppercase border-2 transition-all ${
+                    selectedCategory === cat.id
+                      ? 'bg-wt-yellow text-wt-black border-wt-yellow'
+                      : 'bg-wt-black text-wt-white border-wt-white/30 hover:border-wt-white'
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="relative w-full sm:w-72">
+              <Search className="w-4 h-4 text-wt-gray absolute left-3 top-3" />
+              <input
+                type="text"
+                placeholder="SEARCH 14 APPS..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-wt-black border border-wt-white/40 text-wt-white font-mono text-xs pl-9 pr-3 py-2 outline-none focus:border-wt-yellow"
+              />
+            </div>
+          </div>
+
+          {/* App Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredApps.map((app) => {
+              const isConnected = app.status === 'CONNECTED';
+              return (
+                <GlassCard
+                  key={app.id}
+                  variant={isConnected ? 'yellow' : 'white'}
+                  hud
+                  className="p-5 bg-wt-black/95 font-mono space-y-4 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-start justify-between gap-3 pb-3 border-b border-wt-white/20">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 border-2 border-wt-white bg-wt-black shrink-0">
+                          {getAppIcon(app.id)}
+                        </div>
+                        <div>
+                          <h3 className="font-bold text-sm text-wt-white uppercase">{app.name}</h3>
+                          <div className="text-[10px] text-wt-gray">{app.category}</div>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="font-bold text-sm text-wt-white uppercase">{app.name}</h3>
-                        <div className="text-[10px] text-wt-gray">{app.category} · SYNC: {app.lastSync}</div>
+                      <Badge status={isConnected ? 'ACTIVE' : 'INACTIVE'} label={app.status} size="sm" />
+                    </div>
+
+                    <p className="text-xs text-wt-gray uppercase leading-relaxed mt-3">
+                      {app.description}
+                    </p>
+
+                    {/* Active Config */}
+                    <div className="mt-3 p-2.5 border border-wt-white/20 bg-wt-black text-[11px] space-y-1">
+                      <div className="text-wt-yellow font-bold uppercase text-[10px]">INTEGRATION TELEMETRY:</div>
+                      <div className="flex justify-between text-wt-gray">
+                        <span>LAST SYNC:</span>
+                        <span className="text-wt-white font-bold">{app.lastSync}</span>
+                      </div>
+                      <div className="flex justify-between text-wt-gray">
+                        <span>EVENTS PROCESSED:</span>
+                        <span className="text-wt-yellow font-bold">{app.syncEventsCount.toLocaleString()}</span>
                       </div>
                     </div>
-                    <Badge status={isConnected ? 'ACTIVE' : 'INACTIVE'} label={app.status} size="sm" />
                   </div>
 
-                  <p className="text-xs text-wt-gray uppercase leading-relaxed mt-3">
-                    {app.description}
-                  </p>
-
-                  {/* Config snapshot */}
-                  <div className="mt-3 p-2.5 border border-wt-white/20 bg-wt-black text-[11px] space-y-1">
-                    <div className="text-wt-yellow font-bold uppercase text-[10px]">ACTIVE CONFIGURATION:</div>
-                    {Object.entries(app.config).length > 0 ? (
-                      Object.entries(app.config).map(([k, v]: any) => (
-                        <div key={k} className="flex justify-between text-wt-gray">
-                          <span>{k}:</span>
-                          <span className="text-wt-white font-bold">{String(v)}</span>
-                        </div>
-                      ))
-                    ) : (
-                      <div className="text-wt-gray">No custom credentials registered.</div>
-                    )}
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between gap-3 pt-4 border-t border-wt-white/20">
-                  <div className="text-[11px] text-wt-gray">
-                    Events Synced: <span className="text-wt-white font-bold">{app.syncEventsCount.toLocaleString()}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    {isConnected && (
+                  <div className="flex items-center justify-between gap-2 pt-3 border-t border-wt-white/20">
+                    {isConnected ? (
                       <Button variant="secondary" size="sm" onClick={() => handleTestApp(app.id)} disabled={loading}>
                         <Zap className="w-3.5 h-3.5 mr-1 text-wt-yellow" /> TEST PING
                       </Button>
+                    ) : (
+                      <span className="text-[10px] text-wt-gray">STANDBY</span>
                     )}
+
                     <Button
                       variant={isConnected ? 'danger' : 'primary'}
                       size="sm"
@@ -312,17 +375,17 @@ export const IntegrationsPage: React.FC = () => {
                       {isConnected ? 'DISCONNECT' : 'CONNECT'}
                     </Button>
                   </div>
-                </div>
-              </GlassCard>
-            );
-          })}
+                </GlassCard>
+              );
+            })}
+          </div>
         </div>
       )}
 
       {/* TAB 2: OUTGOING WEBHOOKS */}
       {activeTab === 'WEBHOOKS' && (
         <div className="space-y-6">
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-3">
             <div className="font-mono text-xs text-wt-gray uppercase">
               Configure HTTP POST webhook callbacks for real-time company events.
             </div>
@@ -340,8 +403,8 @@ export const IntegrationsPage: React.FC = () => {
                     <Badge status="ACTIVE" label={wh.status} size="sm" />
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-[11px] text-wt-yellow border border-wt-yellow px-2 py-0.5">
-                      RATE: {wh.deliveryRate}
+                    <span className="text-[11px] text-wt-yellow border border-wt-yellow px-2 py-0.5 font-bold">
+                      DELIVERY: {wh.deliveryRate}
                     </span>
                     <Button variant="secondary" size="sm" onClick={() => handleTestWebhook(wh.id)}>
                       <Send className="w-3.5 h-3.5 mr-1" /> TEST PING
@@ -368,7 +431,7 @@ export const IntegrationsPage: React.FC = () => {
                     </span>
                   ))}
                   <span className="ml-auto text-wt-gray text-[10px]">
-                    SECRET: <code className="text-wt-yellow">{wh.secret}</code>
+                    SECRET: <code className="text-wt-yellow font-mono">{wh.secret}</code>
                   </span>
                 </div>
               </GlassCard>
@@ -380,7 +443,7 @@ export const IntegrationsPage: React.FC = () => {
       {/* TAB 3: API TOKENS */}
       {activeTab === 'KEYS' && (
         <div className="space-y-6">
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-3">
             <div className="font-mono text-xs text-wt-gray uppercase">
               Manage secret Bearer tokens for external scripts, microservices, and turnstiles.
             </div>
@@ -410,7 +473,7 @@ export const IntegrationsPage: React.FC = () => {
                 </div>
 
                 <div className="flex items-center justify-between p-2.5 border border-wt-white/20 bg-wt-black text-xs">
-                  <span className="text-wt-yellow font-bold">{key.prefix}••••••••••••••••</span>
+                  <span className="text-wt-yellow font-bold font-mono">{key.prefix}••••••••••••••••</span>
                   <span className="text-[10px] text-wt-gray uppercase">ACTIVE BEARER TOKEN</span>
                 </div>
               </GlassCard>

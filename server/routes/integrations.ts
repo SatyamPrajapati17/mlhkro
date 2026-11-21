@@ -4,7 +4,7 @@ import { logAudit } from '../db';
 
 export const integrationsRouter = Router();
 
-interface ConnectedApp {
+export interface ConnectedApp {
   id: string;
   name: string;
   category: 'COMMUNICATION' | 'PRODUCTIVITY' | 'FINANCE' | 'HARDWARE';
@@ -40,21 +40,61 @@ let connectedApps: ConnectedApp[] = [
     id: 'teams',
     name: 'Microsoft Teams',
     category: 'COMMUNICATION',
-    status: 'DISCONNECTED',
+    status: 'CONNECTED',
     description: 'Post interactive Adaptive Cards to departmental channels for manager one-tap leave authorizations and morning team status reports.',
+    config: { tenantId: 'worktak-teams-cloud-001', channel: 'Executive Roll-Call' },
+    lastSync: '14 minutes ago',
+    syncEventsCount: 310,
+  },
+  {
+    id: 'discord',
+    name: 'Discord Community & Ops',
+    category: 'COMMUNICATION',
+    status: 'DISCONNECTED',
+    description: 'Post automated check-in streaks, engineering standup attendance, and system security alerts to private developer Discord servers.',
     config: {},
     lastSync: 'Never',
     syncEventsCount: 0,
   },
   {
     id: 'razorpayx',
-    name: 'RazorpayX & Banking API',
+    name: 'RazorpayX Banking & Payouts',
     category: 'FINANCE',
     status: 'CONNECTED',
     description: 'Execute instant direct bank payouts for finalized payroll cycles with automated tax withholding and bank confirmation reconciliation.',
     config: { payoutAccount: 'ACC_9921448102', autoDisburse: false },
     lastSync: '1 hour ago',
     syncEventsCount: 96,
+  },
+  {
+    id: 'stripe',
+    name: 'Stripe Global Contractor Payroll',
+    category: 'FINANCE',
+    status: 'CONNECTED',
+    description: 'Automated multi-currency payouts for international remote contractors and consultants with automatic FX conversion and tax invoice filing.',
+    config: { accountId: 'acct_1MhL2984k', currency: 'USD / EUR' },
+    lastSync: '3 hours ago',
+    syncEventsCount: 42,
+  },
+  {
+    id: 'quickbooks',
+    name: 'QuickBooks Online ERP',
+    category: 'FINANCE',
+    status: 'DISCONNECTED',
+    description: 'Automatically publish ledger balance sheets, journal vouchers, and PF/ESI contribution schedules when payroll is disbursed.',
+    config: {},
+    lastSync: 'Never',
+    syncEventsCount: 0,
+  },
+  {
+    id: 'tally',
+    name: 'Tally Prime Cloud Bridge',
+    category: 'FINANCE',
+    status: 'CONNECTED',
+    description: 'Export XML and JSON payroll vouchers formatted specifically for Indian compliance, statutory gratuity, and TDS accounts.',
+    config: { companyTallyId: 'WORKTAK_CORP_2026', exportPort: 9000 },
+    lastSync: '30 minutes ago',
+    syncEventsCount: 180,
   },
   {
     id: 'zkteco',
@@ -67,14 +107,54 @@ let connectedApps: ConnectedApp[] = [
     syncEventsCount: 4890,
   },
   {
-    id: 'quickbooks',
-    name: 'QuickBooks & Tally ERP',
-    category: 'FINANCE',
+    id: 'suprema',
+    name: 'Suprema FaceStation Access Gates',
+    category: 'HARDWARE',
+    status: 'CONNECTED',
+    description: 'Sync registered 128-D Euclidean vectors directly to Suprema facial recognition door controllers for seamless physical turnstile check-in.',
+    config: { controllerId: 'SUPREMA_GATE_EAST', syncMode: 'BI_DIRECTIONAL' },
+    lastSync: '4 minutes ago',
+    syncEventsCount: 1240,
+  },
+  {
+    id: 'hikvision',
+    name: 'Hikvision DeepInView Cameras',
+    category: 'HARDWARE',
     status: 'DISCONNECTED',
-    description: 'Automatically publish ledger balance sheets, journal vouchers, and PF/ESI contribution schedules when payroll is disbursed.',
+    description: 'Ingest live edge-AI turnstile events and CCTV security perimeter boundary alerts into the WorkTak control ledger.',
     config: {},
     lastSync: 'Never',
     syncEventsCount: 0,
+  },
+  {
+    id: 'github',
+    name: 'GitHub & GitLab Enterprise',
+    category: 'PRODUCTIVITY',
+    status: 'CONNECTED',
+    description: 'Track developer active working presence through commit telemetry and cross-verify with face check-in timestamps to detect ghost check-ins.',
+    config: { org: 'worktak-engineering', webhookActive: true },
+    lastSync: '5 minutes ago',
+    syncEventsCount: 780,
+  },
+  {
+    id: 'notion',
+    name: 'Notion Workspace Sync',
+    category: 'PRODUCTIVITY',
+    status: 'CONNECTED',
+    description: 'Publish live employee directories, official leave policies, and organizational hierarchy charts into internal company Notion wikis.',
+    config: { workspace: 'WorkTak Internal Docs', pageId: 'notion_page_00128' },
+    lastSync: '12 minutes ago',
+    syncEventsCount: 88,
+  },
+  {
+    id: 'jira',
+    name: 'Jira Software & Confluence',
+    category: 'PRODUCTIVITY',
+    status: 'CONNECTED',
+    description: 'Block sprint capacity automatically whenever an engineer has approved leaves logged in WorkTak, avoiding missed sprint deliverables.',
+    config: { projectKey: 'WTK', domain: 'worktak.atlassian.net' },
+    lastSync: '22 minutes ago',
+    syncEventsCount: 165,
   },
 ];
 
@@ -99,6 +179,16 @@ let webhooks: any[] = [
     lastDeliveredAt: '2026-11-20T17:00:00Z',
     deliveryRate: '100%',
   },
+  {
+    id: 'wh-3',
+    name: 'On-Premise Turnstile Physical Gate Listener',
+    url: 'https://hardware.worktak.internal:8443/gate/unlock',
+    events: ['checkin.success'],
+    status: 'ACTIVE',
+    secret: 'whsec_gate_token_77a9',
+    lastDeliveredAt: '2026-11-21T09:40:00Z',
+    deliveryRate: '100%',
+  },
 ];
 
 let apiKeys: any[] = [
@@ -117,6 +207,14 @@ let apiKeys: any[] = [
     role: 'FINANCE',
     createdAt: '2026-11-12',
     lastUsed: '1 hour ago',
+  },
+  {
+    id: 'key-3',
+    name: 'CI/CD Presence Verification Bot',
+    prefix: 'wt_live_cicd_bot_99x',
+    role: 'ADMIN',
+    createdAt: '2026-11-15',
+    lastUsed: '30 minutes ago',
   },
 ];
 

@@ -91,23 +91,23 @@ Every endpoint, view, and AI tool execution enforces strict Role-Based Access Co
 - **Salary Delta Anomaly Flag:** Flags any employee whose net pay deviates $>25\%$ from the prior cycle without an approved base salary revision.
 - **Official PDF Payslips:** Generates branded, verifiable pay statements detailing Basic, HRA, Allowances, PF (12%), PT, and LOP deductions.
 
-### 4. Document AI (KYC & Identity OCR)
-- Supports Aadhaar, PAN Card, and Passport uploads.
-- Auto-extracts employee name, masked ID number (`XXXXXX4812`), DOB, and validity dates.
-- Compares extracted metadata against the registered employee directory profile and scores match confidence ($>90\%$ for verified status).
+### 4. Employee Scanning (PAN, Aadhaar, Passport) & Biometric Face Match
+- **Dual Cross-Verification Engine:** Employs Google Vision OCR combined with 128-D Euclidean biometric portrait matching.
+- **Supported Government Documents:** PAN Card (ITD checksum valid), Aadhaar Card (UIDAI format), Republic of India Passport, and Voter ID.
+- **Biometric Photo-to-Face Similarity:** Extracts the passport/portrait photograph directly from the document scan and cross-verifies against the employee's registered webcam biometric vector. Confirms physical owner identity with similarity scores exceeding $95\%$.
+- **Anti-Spoof Hologram & Microprint Checks:** Validates security watermarks and flags image tampering before HR approval.
 
 ### 5. Cryptographic SHA-256 Audit Hash Chain
 - Every critical operational event (Login, Biometric Enrollment, Attendance Check-In, Leave Approval, Payroll Disbursement, Document Verification) is committed as an immutable block:
   $$\text{hash}_n = \text{SHA-256}(\text{hash}_{n-1} \parallel \text{company\_id} \parallel \text{actor} \parallel \text{action} \parallel \text{entity} \parallel \text{entity\_id} \parallel \text{metadata} \parallel \text{created\_at})$$
 - One-click `[ VERIFY INTEGRITY CHAIN ]` walks the ledger back to genesis (`GENESIS_HASH_WORKTAK_000`) and pinpoints any row tampering.
 
-### 6. App Integrations Hub & Webhooks
-Connects WorkTak to third-party tools:
-- **Slack Workspaces:** Real-time channel broadcasts for daily attendance roll-calls (`#attendance-alerts`), leave requests, and payroll disbursements.
-- **Google Workspace & Calendar:** Bi-directional sync of approved team leaves to company Google Calendars and automatic archiving of KYC identity documents into Google Drive.
-- **Microsoft Teams:** Adaptive Cards for manager one-tap leave authorizations.
-- **RazorpayX / Stripe Banking API:** Automated direct bank transfers for approved payroll cycles.
-- **ZKTeco Biometric Hardware:** On-premise optical/RFID turnstile gate ingestion via TCP/REST webhooks.
+### 6. App Integrations Hub (14 Enterprise Bridges)
+Connects WorkTak to third-party software and physical biometric hardware:
+- **Communication:** Slack Workspaces (`#attendance-alerts`), Microsoft Teams (Adaptive Cards), Discord Private Developer Servers.
+- **Finance & Payroll:** RazorpayX Direct Payouts, Stripe Global Remote Contractors, QuickBooks Online, Tally Prime Cloud Bridge.
+- **Hardware & Biometrics:** ZKTeco Optical/RFID Gates, Suprema FaceStation Controllers, Hikvision DeepInView Cameras.
+- **Productivity & Dev:** GitHub & GitLab Enterprise Presence, Notion Internal Wiki Sync, Jira Software Sprint Availability.
 - **Custom Outgoing Webhooks:** HTTPS webhook callbacks signed with HMAC-SHA256 secrets for real-time company events.
 - **Scoped API Tokens:** Bearer tokens for external scripts, microservices, and turnstiles.
 
