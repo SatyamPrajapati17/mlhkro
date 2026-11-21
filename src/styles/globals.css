@@ -1,0 +1,20 @@
+@import './tokens.css';
+@import './motion.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: var(--wt-black);
+    color: var(--wt-white);
+    font-family: 'Space Grotesk', -apple-system, sans-serif;
+  }
+
+  /* Focus ring rule from Design System */
+  *:focus-visible {
+    outline: 3px solid var(--wt-yellow) !important;
+    outline-offset: 2px !important;
+  }
+}

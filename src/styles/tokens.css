@@ -1,0 +1,136 @@
+:root {
+  /* Base */
+  --wt-black:   #0A0A0A;
+  --wt-ink:     #141414;
+  --wt-white:   #FAFAF5;
+  --wt-gray:    #8A8A85;
+
+  /* Accents */
+  --wt-red:     #FF2D2D;
+  --wt-yellow:  #FFD600;
+
+  /* Glass */
+  --wt-glass:        rgba(250, 250, 245, 0.07);
+  --wt-glass-strong: rgba(250, 250, 245, 0.14);
+  --wt-glass-red:    rgba(255, 45, 45, 0.12);
+  --wt-glass-yellow: rgba(255, 214, 0, 0.12);
+  --wt-blur: 16px;
+
+  /* Lines & shadow */
+  --wt-border: 3px solid var(--wt-white);
+  --wt-border-thin: 1px solid rgba(250, 250, 245, 0.25);
+  --wt-shadow-hard: 6px 6px 0 var(--wt-red);
+  --wt-shadow-hard-y: 6px 6px 0 var(--wt-yellow);
+  --wt-shadow-hard-w: 6px 6px 0 var(--wt-white);
+}
+
+/* Background Cyber Grid */
+.cyber-grid {
+  background-color: var(--wt-black);
+  background-image: 
+    linear-gradient(to right, rgba(250, 250, 245, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(250, 250, 245, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Glassmorphism Containers */
+.glass {
+  background: var(--wt-glass);
+  backdrop-filter: blur(var(--wt-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--wt-blur)) saturate(140%);
+  border: var(--wt-border);
+  box-shadow: var(--wt-shadow-hard);
+}
+
+.glass-y {
+  background: var(--wt-glass);
+  backdrop-filter: blur(var(--wt-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--wt-blur)) saturate(140%);
+  border: 3px solid var(--wt-yellow);
+  box-shadow: var(--wt-shadow-hard-y);
+}
+
+.glass-w {
+  background: var(--wt-glass);
+  backdrop-filter: blur(var(--wt-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--wt-blur)) saturate(140%);
+  border: var(--wt-border);
+  box-shadow: var(--wt-shadow-hard-w);
+}
+
+.glass-plain {
+  background: var(--wt-glass);
+  backdrop-filter: blur(var(--wt-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--wt-blur)) saturate(140%);
+  border: var(--wt-border-thin);
+}
+
+/* HUD Corner Brackets */
+.hud-container {
+  position: relative;
+}
+
+.hud-bracket-tl {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 14px;
+  height: 14px;
+  border-top: 3px solid var(--wt-yellow);
+  border-left: 3px solid var(--wt-yellow);
+  pointer-events: none;
+}
+
+.hud-bracket-tr {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 14px;
+  height: 14px;
+  border-top: 3px solid var(--wt-yellow);
+  border-right: 3px solid var(--wt-yellow);
+  pointer-events: none;
+}
+
+.hud-bracket-bl {
+  position: absolute;
+  bottom: -3px;
+  left: -3px;
+  width: 14px;
+  height: 14px;
+  border-bottom: 3px solid var(--wt-yellow);
+  border-left: 3px solid var(--wt-yellow);
+  pointer-events: none;
+}
+
+.hud-bracket-br {
+  position: absolute;
+  bottom: -3px;
+  right: -3px;
+  width: 14px;
+  height: 14px;
+  border-bottom: 3px solid var(--wt-yellow);
+  border-right: 3px solid var(--wt-yellow);
+  pointer-events: none;
+}
+
+/* Hazard Stripe Pattern */
+.hazard-stripe {
+  background: repeating-linear-gradient(
+    -45deg,
+    #FFD600,
+    #FFD600 12px,
+    #0A0A0A 12px,
+    #0A0A0A 24px
+  );
+}
+
+.hazard-stripe-red {
+  background: repeating-linear-gradient(
+    -45deg,
+    #FF2D2D,
+    #FF2D2D 12px,
+    #0A0A0A 12px,
+    #0A0A0A 24px
+  );
+}

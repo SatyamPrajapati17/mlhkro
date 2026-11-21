@@ -1,0 +1,120 @@
+/* Scanline animation */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+
+.scanline-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 214, 0, 0.4), transparent);
+  pointer-events: none;
+  animation: scanline 3s linear infinite;
+}
+
+/* Ticker marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Status dot pulse */
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.status-dot-pulse {
+  animation: status-pulse 1.2s steps(2, start) infinite;
+}
+
+/* Glitch text effect */
+@keyframes glitch {
+  0% {
+    text-shadow: 2px 0 #FF2D2D, -2px 0 #FFD600;
+  }
+  25% {
+    text-shadow: -3px 0 #FF2D2D, 3px 0 #FFD600;
+  }
+  50% {
+    text-shadow: 3px 0 #FF2D2D, -3px 0 #FFD600;
+  }
+  75% {
+    text-shadow: -2px 0 #FF2D2D, 2px 0 #FFD600;
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+
+.glitch-hover:hover {
+  animation: glitch 0.25s linear infinite;
+}
+
+.glitch-once {
+  animation: glitch 0.35s ease-out;
+}
+
+/* Button & Card interactive motion */
+.btn-motion {
+  transition: transform 100ms cubic-bezier(0, 0, 0.2, 1), box-shadow 100ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.btn-motion:hover {
+  transform: translate(-2px, -2px);
+}
+
+.btn-motion:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 transparent !important;
+}
+
+.card-motion {
+  transition: transform 120ms steps(3), box-shadow 120ms steps(3);
+}
+
+.card-motion:hover {
+  transform: translate(-3px, -3px);
+}
+
+/* Seam loading bar */
+@keyframes seam-sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.seam-loader {
+  animation: seam-sweep 1.2s cubic-bezier(0.77, 0, 0.18, 1) infinite;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .scanline-overlay, .animate-marquee {
+    animation: none !important;
+  }
+}
+
+.reduce-effects *, .reduce-effects *::before, .reduce-effects *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}

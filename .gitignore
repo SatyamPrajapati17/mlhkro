@@ -1,0 +1,12 @@
+node_modules
+dist
+.env
+.env.local
+*.log
+npm-debug.log*
+.DS_Store
+.impeccable
+docs/
+0*.md
+server/data/*.json
+
