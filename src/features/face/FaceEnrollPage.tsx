@@ -132,7 +132,7 @@ export const FaceEnrollPage: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between border-b-2 border-wt-white/20 pb-4">
         <div>
-          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">// ENROLLMENT WIZARD</div>
+          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">ENROLLMENT WIZARD</div>
           <h2 className="font-display text-3xl font-black text-wt-white uppercase">
             BIOMETRIC FACE ENROLLMENT
           </h2>
@@ -247,7 +247,7 @@ export const FaceEnrollPage: React.FC = () => {
 
             {/* Live Quality Caption */}
             <div className="absolute bottom-3 left-3 right-3 bg-wt-black/80 border border-wt-yellow p-1.5 font-mono text-xs text-wt-yellow font-bold uppercase">
-              // {qualityHint}
+              {qualityHint}
             </div>
           </div>
 
@@ -277,7 +277,7 @@ export const FaceEnrollPage: React.FC = () => {
 
           <div>
             <div className="font-mono text-xs text-wt-yellow uppercase tracking-widest font-bold">
-              // REGISTRATION COMPLETE
+              REGISTRATION COMPLETE
             </div>
             <h3 className="font-display text-3xl font-black text-wt-white uppercase mt-1">
               FACE SUCCESSFULLY ENROLLED

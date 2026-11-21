@@ -55,7 +55,7 @@ export const AppShell: React.FC<AppShellProps> = ({ currentRole, onRoleChange })
                 className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-wt-black border border-wt-white/40 text-wt-gray hover:text-wt-white hover:border-wt-white text-xs font-mono transition-colors"
               >
                 <Search className="w-3.5 h-3.5" />
-                <span>ASK TAK//AI...</span>
+                <span>ASK TAK AI...</span>
                 <kbd className="bg-wt-white/10 text-[10px] px-1 py-0.2 border border-wt-white/20">
                   ⌘K
                 </kbd>

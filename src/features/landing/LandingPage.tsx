@@ -18,7 +18,7 @@ export const LandingPage: React.FC = () => {
         </div>
         <div className="flex items-center gap-4">
           <span className="font-mono text-xs text-wt-gray uppercase hidden md:inline-block">
-            // CONTROL ROOM v1.0
+            CONTROL ROOM v1.0
           </span>
           <Button variant="primary" size="sm" onClick={() => navigate('/login')}>
             [ ENTER WORKTAK ]
@@ -56,7 +56,7 @@ export const LandingPage: React.FC = () => {
           <GlassCard variant="red" hud className="p-8 bg-wt-black/90">
             <div className="scanline-overlay" />
             <div className="flex items-center justify-between border-b border-wt-white/20 pb-3 mb-6 font-mono text-xs text-wt-gray">
-              <span className="text-wt-yellow font-bold">// SYSTEM DEMO PREVIEW</span>
+              <span className="text-wt-yellow font-bold">SYSTEM DEMO PREVIEW</span>
               <span className="flex items-center gap-1.5 text-wt-white">
                 <span className="w-2 h-2 bg-wt-red status-dot-pulse" />
                 ACTIVE ENGINE: FACE-API 128-D
@@ -67,12 +67,12 @@ export const LandingPage: React.FC = () => {
               <div className="p-4 border-2 border-wt-white bg-wt-black">
                 <ScanFace className="w-6 h-6 text-wt-yellow mb-2" />
                 <div className="font-mono text-xs uppercase font-bold text-wt-white">01 FACE ATTENDANCE</div>
-                <div className="font-mono text-[11px] text-wt-gray mt-1">Liveness challenges + 128-d pgvector match. No raw photos.</div>
+                <div className="font-mono text-[11px] text-wt-gray mt-1">Liveness challenges + 128-d vector match. No raw photos.</div>
               </div>
 
               <div className="p-4 border-2 border-wt-white bg-wt-black">
                 <Bot className="w-6 h-6 text-wt-red mb-2" />
-                <div className="font-mono text-xs uppercase font-bold text-wt-white">02 TAK//AI COPILOT</div>
+                <div className="font-mono text-xs uppercase font-bold text-wt-white">02 TAK AI ASSISTANT</div>
                 <div className="font-mono text-[11px] text-wt-gray mt-1">Whitelisted read-only tools strictly enforced by user role & RLS.</div>
               </div>
 
@@ -121,7 +121,7 @@ export const LandingPage: React.FC = () => {
       {/* Cyber Footer */}
       <footer className="border-t-2 border-wt-white bg-wt-black p-6 font-mono text-xs text-wt-gray flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
-          WORKTAK // CYBER BRUTALIST ENTERPRISE PLATFORM · RUNS EXCLUSIVELY ON PORT 3002
+          WORKTAK · CYBER BRUTALIST ENTERPRISE PLATFORM · RUNS EXCLUSIVELY ON PORT 3002
         </div>
         <div className="text-wt-white font-bold">
           [ STATUS: ALL SYSTEMS NOMINAL ]

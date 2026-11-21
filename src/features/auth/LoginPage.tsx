@@ -87,7 +87,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
           </p>
 
           <div className="p-4 border-2 border-wt-white/30 bg-wt-black/60 font-mono text-xs space-y-2">
-            <div className="text-wt-yellow font-bold">// SECURITY PROTOCOLS</div>
+            <div className="text-wt-yellow font-bold">SECURITY PROTOCOLS</div>
             <div className="text-wt-gray">• Server-issued httpOnly session cookies</div>
             <div className="text-wt-gray">• Row-Level Security enforced per company & role</div>
             <div className="text-wt-gray">• 5 failed attempts locks terminal for 15 minutes</div>
@@ -103,7 +103,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
                 <Shield className="w-4 h-4 text-wt-yellow" />
                 SIGN IN
               </h3>
-              <span className="font-mono text-[11px] text-wt-gray">// PORT: 3002</span>
+              <span className="font-mono text-[11px] text-wt-gray">PORT: 3002</span>
             </div>
 
             {error && (
@@ -153,7 +153,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
               {/* Instant Role Selector (Sets Real Server Session Cookie) */}
               <div className="space-y-2">
                 <div className="font-mono text-[11px] text-wt-yellow uppercase font-bold">
-                  // TEST ROLE SESSIONS (SERVER AUTHENTICATED)
+                  TEST ROLE SESSIONS (SERVER AUTHENTICATED)
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <Button

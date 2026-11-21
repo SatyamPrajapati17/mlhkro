@@ -23,7 +23,7 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
       <div className="hazard-stripe h-5 w-full border-b-2 border-wt-white" />
       <div className="p-8 text-center flex flex-col items-center justify-center">
         <h4 className="font-mono text-base uppercase font-black tracking-wider text-wt-white mb-2">
-          // {title}
+          {title}
         </h4>
         <p className="font-mono text-xs text-wt-gray max-w-md mb-6 uppercase tracking-wider">
           {description}

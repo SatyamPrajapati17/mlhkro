@@ -146,7 +146,7 @@ export const PayrollPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-wt-white/20 pb-4">
         <div>
-          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">// COMPENSATION & DISBURSEMENT</div>
+          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">COMPENSATION & DISBURSEMENT</div>
           <h2 className="font-display text-3xl font-black text-wt-white uppercase">PAYROLL RUNS</h2>
         </div>
         <Button variant="primary" size="md" onClick={() => setNewRunModalOpen(true)}>
@@ -182,7 +182,7 @@ export const PayrollPage: React.FC = () => {
         <GlassCard variant="yellow" hud className="p-6 bg-wt-black/95 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b-2 border-wt-white">
             <div>
-              <div className="font-mono text-xs text-wt-gray uppercase">// ACTIVE WORKFLOW DETAILS</div>
+              <div className="font-mono text-xs text-wt-gray uppercase">ACTIVE WORKFLOW DETAILS</div>
               <h3 className="font-display text-2xl font-black text-wt-white uppercase">
                 {selectedRun.periodMonth.slice(0, 7)} PAYROLL EXECUTION
               </h3>

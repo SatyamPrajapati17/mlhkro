@@ -84,7 +84,7 @@ export const OnboardingPage: React.FC = () => {
           <span className="w-2 h-2 bg-wt-red ml-0.5 inline-block" />
         </div>
         <div className="font-mono text-xs text-wt-gray uppercase">
-          // ONBOARDING WIZARD
+          ONBOARDING WIZARD
         </div>
       </div>
 

@@ -22,7 +22,7 @@ export const SettingsPage: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between border-b-2 border-wt-white/20 pb-4">
         <div>
-          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">// SYSTEM PREFERENCES & POLICIES</div>
+          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">SYSTEM PREFERENCES & POLICIES</div>
           <h2 className="font-display text-3xl font-black text-wt-white uppercase">COMPANY SETTINGS</h2>
         </div>
         <Badge status="ACTIVE" label="ADMIN CONTROL" size="md" />
@@ -39,7 +39,7 @@ export const SettingsPage: React.FC = () => {
       <GlassCard variant="yellow" hud className="p-6 bg-wt-black/95 font-mono space-y-4">
         <div className="flex items-center justify-between border-b border-wt-white/20 pb-3">
           <h3 className="font-mono text-base uppercase font-bold text-wt-white">
-            // BIOMETRIC RECOGNITION THRESHOLD
+            BIOMETRIC RECOGNITION THRESHOLD
           </h3>
           <span className="font-bold text-wt-yellow text-lg">{threshold.toFixed(2)}</span>
         </div>
@@ -82,7 +82,7 @@ export const SettingsPage: React.FC = () => {
       <GlassCard variant="white" hud className="p-6 bg-wt-black/95 font-mono space-y-4">
         <div className="border-b border-wt-white/20 pb-3">
           <h3 className="font-mono text-base uppercase font-bold text-wt-white">
-            // ATTENDANCE & GRACE RULES
+            ATTENDANCE & GRACE RULES
           </h3>
         </div>
 
@@ -111,7 +111,7 @@ export const SettingsPage: React.FC = () => {
       {/* Accessibility / Motion */}
       <GlassCard variant="yellow" hud className="p-6 bg-wt-black/95 font-mono space-y-3">
         <h3 className="font-mono text-base uppercase font-bold text-wt-white">
-          // ACCESSIBILITY & MOTION
+          ACCESSIBILITY & MOTION
         </h3>
         <label className="flex items-center gap-3 cursor-pointer select-none">
           <input

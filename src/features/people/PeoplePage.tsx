@@ -130,7 +130,7 @@ export const PeoplePage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-wt-white/20 pb-4">
         <div>
-          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">// DIRECTORY & ROSTER</div>
+          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">DIRECTORY & ROSTER</div>
           <h2 className="font-display text-3xl font-black text-wt-white uppercase">EMPLOYEE DIRECTORY</h2>
         </div>
         <Button variant="primary" size="md" onClick={() => setInviteDrawerOpen(true)}>
@@ -153,7 +153,7 @@ export const PeoplePage: React.FC = () => {
             />
           </div>
           <div className="flex items-center gap-2 w-full sm:w-auto">
-            <span className="font-mono text-xs text-wt-gray uppercase font-bold shrink-0">// ROLE:</span>
+            <span className="font-mono text-xs text-wt-gray uppercase font-bold shrink-0">ROLE:</span>
             <select
               value={roleFilter}
               onChange={(e) => setRoleFilter(e.target.value)}
@@ -243,7 +243,7 @@ export const PeoplePage: React.FC = () => {
         <Modal
           isOpen={!!selectedEmployee}
           onClose={() => setSelectedEmployee(null)}
-          title={`EMPLOYEE DOSSIER // ${selectedEmployee.employee_code}`}
+          title={`EMPLOYEE DOSSIER: ${selectedEmployee.employee_code}`}
         >
           <div className="space-y-4 font-mono text-xs">
             <div className="flex items-center justify-between pb-3 border-b border-wt-white/20">
@@ -258,19 +258,19 @@ export const PeoplePage: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-3">
               <div className="p-3 border border-wt-white/20 bg-wt-black">
-                <div className="text-wt-gray text-[10px] uppercase font-bold">// DESIGNATION</div>
+                <div className="text-wt-gray text-[10px] uppercase font-bold">DESIGNATION</div>
                 <div className="text-wt-white font-bold mt-0.5">{selectedEmployee.designation || 'Specialist'}</div>
               </div>
               <div className="p-3 border border-wt-white/20 bg-wt-black">
-                <div className="text-wt-gray text-[10px] uppercase font-bold">// JOIN DATE</div>
+                <div className="text-wt-gray text-[10px] uppercase font-bold">JOIN DATE</div>
                 <div className="text-wt-white font-bold mt-0.5">{selectedEmployee.date_of_joining}</div>
               </div>
               <div className="p-3 border border-wt-white/20 bg-wt-black">
-                <div className="text-wt-gray text-[10px] uppercase font-bold">// SHIFT</div>
+                <div className="text-wt-gray text-[10px] uppercase font-bold">SHIFT</div>
                 <div className="text-wt-white font-bold mt-0.5">General (09:30 - 18:30)</div>
               </div>
               <div className="p-3 border border-wt-white/20 bg-wt-black">
-                <div className="text-wt-gray text-[10px] uppercase font-bold">// BIOMETRIC STATUS</div>
+                <div className="text-wt-gray text-[10px] uppercase font-bold">BIOMETRIC STATUS</div>
                 <div className="text-wt-yellow font-bold mt-0.5">128-D VECTOR ACTIVE</div>
               </div>
             </div>

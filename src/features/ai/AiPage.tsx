@@ -22,7 +22,7 @@ export const AiPage: React.FC = () => {
     {
       id: 'msg-0',
       role: 'assistant',
-      content: `TAK//AI Control Copilot initialized. I have whitelisted read-only access to company telemetry, biometric logs, leave quotas, and compensation records strictly scoped to your role permissions.\n\nAsk me anything or select a prompt below.`,
+      content: `WorkTak AI Assistant ready. You can query headcount, attendance statistics, leave balances, department payroll, and risk signals scoped to your role permissions.\n\nSelect a prompt below or type your question.`,
       sources: ['WorkTak Telemetry Layer'],
       timestamp: '09:00',
     },
@@ -89,7 +89,7 @@ export const AiPage: React.FC = () => {
         {
           id: `msg-${Date.now() + 1}`,
           role: 'assistant',
-          content: `NETWORK ERROR: Failed to connect to TAK//AI backend.`,
+          content: `NETWORK ERROR: Failed to connect to AI backend.`,
           timestamp: 'NOW',
         },
       ]);
@@ -111,8 +111,8 @@ export const AiPage: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between border-b-2 border-wt-white/20 pb-4">
         <div>
-          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">// ARTIFICIAL INTELLIGENCE & MACHINE LEARNING</div>
-          <h2 className="font-display text-3xl font-black text-wt-white uppercase">TAK//AI ASSISTANT</h2>
+          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">ARTIFICIAL INTELLIGENCE & MACHINE LEARNING</div>
+          <h2 className="font-display text-3xl font-black text-wt-white uppercase">TAK AI ASSISTANT</h2>
         </div>
         <Badge status="ACTIVE" label="GEMINI 2.5 FLASH" size="md" />
       </div>
@@ -142,7 +142,7 @@ export const AiPage: React.FC = () => {
                   }`}
                 >
                   <div className="flex items-center justify-between pb-1.5 mb-2 border-b border-wt-white/10 text-[10px] uppercase font-bold text-wt-gray">
-                    <span>{isAssistant ? '// TAK//AI' : '// YOU'}</span>
+                    <span>{isAssistant ? 'TAK AI' : 'YOU'}</span>
                     <span>{m.timestamp}</span>
                   </div>
 
@@ -213,7 +213,7 @@ export const AiPage: React.FC = () => {
             className="flex-1 bg-wt-black border-2 border-wt-white text-wt-white font-mono text-xs px-4 py-3 outline-none focus:border-wt-yellow placeholder:text-wt-gray"
           />
           <Button variant="primary" size="md" type="submit" disabled={isLoading}>
-            <Send className="w-4 h-4 mr-1.5" /> ASK TAK//AI
+            <Send className="w-4 h-4 mr-1.5" /> ASK TAK AI
           </Button>
         </form>
       </GlassCard>

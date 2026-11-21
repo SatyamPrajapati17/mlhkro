@@ -20,7 +20,7 @@ export const AccessDeniedPage: React.FC = () => {
         </div>
 
         <div className="font-mono text-xs uppercase tracking-widest text-wt-red font-bold mb-1">
-          // ERROR CODE: 403 FORBIDDEN
+          ERROR CODE: 403 FORBIDDEN
         </div>
 
         <h1 className="font-display text-4xl sm:text-5xl font-black text-wt-white uppercase tracking-tight mb-4 glitch-hover">

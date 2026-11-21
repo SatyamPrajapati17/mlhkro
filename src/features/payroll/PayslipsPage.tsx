@@ -29,7 +29,7 @@ export const PayslipsPage: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between border-b-2 border-wt-white/20 pb-4">
         <div>
-          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">// EARNINGS & TAX STATEMENTS</div>
+          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">EARNINGS & TAX STATEMENTS</div>
           <h2 className="font-display text-3xl font-black text-wt-white uppercase">MY PAYSLIPS</h2>
         </div>
         <Badge status="PAID" label="PAYSLIP ENGINE" size="md" />
@@ -80,7 +80,7 @@ export const PayslipsPage: React.FC = () => {
         <Modal
           isOpen={!!selectedPayslip}
           onClose={() => setSelectedPayslip(null)}
-          title={`OFFICIAL PAYSLIP // ${selectedPayslip.periodMonth}`}
+          title={`OFFICIAL PAYSLIP: ${selectedPayslip.periodMonth}`}
         >
           <div className="p-4 border-2 border-wt-white bg-wt-black font-mono text-xs space-y-4">
             <div className="flex justify-between border-b-2 border-wt-white pb-3">
@@ -96,13 +96,13 @@ export const PayslipsPage: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-4 border-b border-wt-white/20 pb-3">
               <div>
-                <div className="text-wt-yellow font-bold uppercase mb-2">// EARNINGS</div>
+                <div className="text-wt-yellow font-bold uppercase mb-2">EARNINGS</div>
                 <div className="flex justify-between py-1"><span>Basic Salary:</span><span className="text-wt-white font-bold">₹47,500</span></div>
                 <div className="flex justify-between py-1"><span>HRA Allowance:</span><span className="text-wt-white font-bold">₹23,750</span></div>
                 <div className="flex justify-between py-1"><span>Special Allowance:</span><span className="text-wt-white font-bold">₹23,750</span></div>
               </div>
               <div>
-                <div className="text-wt-red font-bold uppercase mb-2">// DEDUCTIONS</div>
+                <div className="text-wt-red font-bold uppercase mb-2">DEDUCTIONS</div>
                 <div className="flex justify-between py-1"><span>Provident Fund (12%):</span><span className="text-wt-red font-bold">₹5,700</span></div>
                 <div className="flex justify-between py-1"><span>Professional Tax:</span><span className="text-wt-red font-bold">₹200</span></div>
                 <div className="flex justify-between py-1"><span>LOP Deduction (0 days):</span><span className="text-wt-gray">₹0</span></div>

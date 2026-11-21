@@ -153,7 +153,7 @@ export const LeavesPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-wt-white/20 pb-4">
         <div>
-          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">// LEAVE QUOTAS & APPROVALS</div>
+          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">LEAVE QUOTAS & APPROVALS</div>
           <h2 className="font-display text-3xl font-black text-wt-white uppercase">LEAVE MANAGEMENT</h2>
         </div>
         <Button variant="primary" size="md" onClick={() => setApplyModalOpen(true)}>
@@ -167,7 +167,7 @@ export const LeavesPage: React.FC = () => {
           const remaining = b.allocated - b.used;
           return (
             <GlassCard key={code} variant="yellow" hud className="p-4 bg-wt-black/95">
-              <div className="font-mono text-xs text-wt-gray uppercase font-bold">// [{code}] QUOTA</div>
+              <div className="font-mono text-xs text-wt-gray uppercase font-bold">[{code}] QUOTA</div>
               <div className="my-1">
                 <div className="font-mono text-3xl font-black text-wt-yellow">{remaining.toFixed(1)}</div>
                 <div className="text-[10px] text-wt-gray uppercase">REMAINING OF {b.allocated.toFixed(1)} ALLOCATED</div>

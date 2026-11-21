@@ -43,7 +43,7 @@ const RequireAuth: React.FC<{
       <div className="min-h-screen bg-wt-black text-wt-white font-mono flex items-center justify-center p-8">
         <div className="text-center space-y-4">
           <div className="w-12 h-12 border-4 border-wt-yellow border-t-transparent rounded-none animate-spin mx-auto" />
-          <div className="text-xs uppercase tracking-widest text-wt-yellow">// VERIFYING SERVER SESSION...</div>
+          <div className="text-xs uppercase tracking-widest text-wt-yellow">VERIFYING SERVER SESSION...</div>
         </div>
       </div>
     );

@@ -94,7 +94,7 @@ export const DocumentsPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-wt-white/20 pb-4">
         <div>
-          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">// COMPLIANCE & IDENTITY VERIFICATION</div>
+          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">COMPLIANCE & IDENTITY VERIFICATION</div>
           <h2 className="font-display text-3xl font-black text-wt-white uppercase">DOCUMENTS & AI EXTRACTION</h2>
         </div>
         <Button variant="primary" size="md" onClick={() => setUploadModalOpen(true)}>
@@ -195,14 +195,14 @@ export const DocumentsPage: React.FC = () => {
           isOpen={!!selectedDoc}
           onClose={() => setSelectedDoc(null)}
           maxWidth="lg"
-          title={`VERIFICATION // ${selectedDoc.docType} — ${selectedDoc.employeeName}`}
+          title={`VERIFICATION: ${selectedDoc.docType} — ${selectedDoc.employeeName}`}
         >
           <div className="space-y-6 font-mono text-xs">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Left Pane: Document File Details */}
               <div className="p-4 border-2 border-wt-white bg-wt-black space-y-3">
                 <div className="font-bold text-wt-yellow uppercase border-b border-wt-white/20 pb-2">
-                  // FILE METADATA
+                  FILE METADATA
                 </div>
                 <div><span className="text-wt-gray">File:</span> <span className="text-wt-white font-bold">{selectedDoc.fileName}</span></div>
                 <div><span className="text-wt-gray">Size:</span> <span className="text-wt-white font-bold">1.5 MB</span></div>
@@ -213,7 +213,7 @@ export const DocumentsPage: React.FC = () => {
               {/* Right Pane: AI Extracted Fields vs Profile */}
               <div className="p-4 border-2 border-wt-yellow bg-wt-black space-y-3">
                 <div className="font-bold text-wt-yellow uppercase border-b border-wt-white/20 pb-2 flex items-center justify-between">
-                  <span>// AI EXTRACTION AUDIT</span>
+                  <span>DOCUMENT EXTRACTION AUDIT</span>
                   <span className="text-wt-white font-bold">MATCH: 100%</span>
                 </div>
                 {selectedDoc.extracted && (

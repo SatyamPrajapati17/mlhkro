@@ -183,7 +183,7 @@ export const CheckInPage: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between border-b-2 border-wt-white/20 pb-4">
         <div>
-          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">// BIOMETRIC RECOGNITION</div>
+          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">BIOMETRIC RECOGNITION</div>
           <h2 className="font-display text-3xl font-black text-wt-white uppercase">
             ATTENDANCE CHECK-IN / CHECK-OUT
           </h2>
@@ -225,7 +225,7 @@ export const CheckInPage: React.FC = () => {
               <div className="py-20 flex flex-col items-center justify-center text-center space-y-4">
                 <div className="w-12 h-12 border-4 border-wt-yellow border-t-transparent animate-spin" />
                 <div className="font-mono text-xs text-wt-yellow uppercase tracking-widest font-bold">
-                  // INITIALIZING NEURAL NETWORK & CAMERA...
+                  INITIALIZING NEURAL NETWORK & CAMERA...
                 </div>
               </div>
             )}
@@ -246,7 +246,7 @@ export const CheckInPage: React.FC = () => {
                   {/* Liveness HUD Target Brackets */}
                   <div className="absolute inset-8 border-2 border-dashed border-wt-yellow/70 pointer-events-none flex flex-col justify-between p-2">
                     <div className="flex justify-between font-mono text-[10px] text-wt-yellow font-bold">
-                      <span>HUD // TARGET_ACQUIRED</span>
+                      <span>HUD · TARGET_ACQUIRED</span>
                       <span>TIME: {countdown}S</span>
                     </div>
                     <div className="text-center font-display text-2xl sm:text-3xl font-black text-wt-yellow uppercase bg-wt-black/80 py-2 border-2 border-wt-yellow glitch-hover">
@@ -288,7 +288,7 @@ export const CheckInPage: React.FC = () => {
                 </div>
                 <div>
                   <div className="font-mono text-xs text-wt-yellow uppercase tracking-widest font-bold">
-                    // BIOMETRIC VERIFICATION PASSED
+                    BIOMETRIC VERIFICATION PASSED
                   </div>
                   <h3 className="font-display text-3xl font-black text-wt-white uppercase mt-1">
                     CHECKED IN {verifyResult?.checkInTime}
@@ -316,7 +316,7 @@ export const CheckInPage: React.FC = () => {
                 </div>
                 <div>
                   <div className="font-mono text-xs text-wt-red uppercase tracking-widest font-bold">
-                    // VERIFICATION FAILED
+                    VERIFICATION FAILED
                   </div>
                   <h3 className="font-display text-2xl font-black text-wt-white uppercase mt-1">
                     {failureReason || 'FACE NOT MATCHED'}
@@ -342,7 +342,7 @@ export const CheckInPage: React.FC = () => {
         <div className="md:col-span-5 space-y-6">
           <GlassCard variant="white" hud className="p-6 bg-wt-black/95 font-mono text-xs space-y-4">
             <div className="font-bold text-wt-yellow uppercase tracking-wider border-b border-wt-white/20 pb-2">
-              // LIVENESS PROTOCOL RULES
+              LIVENESS PROTOCOL RULES
             </div>
             <div className="space-y-2 text-wt-gray">
               <div>
@@ -372,7 +372,7 @@ export const CheckInPage: React.FC = () => {
 
           <GlassCard variant="red" hud className="p-6 bg-wt-black/95 font-mono text-xs space-y-3">
             <div className="font-bold text-wt-red uppercase tracking-wider">
-              // MANUAL OVERRIDE FALLBACK
+              MANUAL OVERRIDE FALLBACK
             </div>
             <p className="text-wt-gray uppercase">
               Working remotely or camera malfunctioning? Submit a timestamped check-in request to your Manager or HR for manual approval.

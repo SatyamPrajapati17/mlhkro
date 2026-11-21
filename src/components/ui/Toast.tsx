@@ -59,7 +59,7 @@ export const Toast: React.FC<ToastProps> = ({
       <div className="flex items-start gap-2.5">
         <span className="mt-0.5">{current.icon}</span>
         <div>
-          <div className="text-[10px] text-wt-gray uppercase font-bold tracking-widest">// {current.label}</div>
+          <div className="text-[10px] text-wt-gray uppercase font-bold tracking-widest">{current.label}</div>
           <div className="text-xs text-wt-white mt-0.5 font-bold">{message}</div>
         </div>
       </div>

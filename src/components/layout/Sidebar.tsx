@@ -38,7 +38,7 @@ const navItems: NavItemConfig[] = [
   { name: 'PAYROLL', path: '/app/payroll', icon: <CircleDollarSign className="w-4 h-4" />, allowedRoles: ['ADMIN', 'FINANCE'] },
   { name: 'PAYSLIPS', path: '/app/payslips', icon: <Receipt className="w-4 h-4" />, allowedRoles: ['ADMIN', 'HR', 'FINANCE', 'MANAGER', 'EMPLOYEE'] },
   { name: 'DOCUMENTS', path: '/app/documents', icon: <FileText className="w-4 h-4" />, allowedRoles: ['ADMIN', 'HR', 'EMPLOYEE'] },
-  { name: 'TAK//AI', path: '/app/ai', icon: <Bot className="w-4 h-4 text-wt-yellow" />, allowedRoles: ['ADMIN', 'HR', 'FINANCE', 'MANAGER', 'EMPLOYEE'] },
+  { name: 'TAK AI', path: '/app/ai', icon: <Bot className="w-4 h-4 text-wt-yellow" />, allowedRoles: ['ADMIN', 'HR', 'FINANCE', 'MANAGER', 'EMPLOYEE'] },
   { name: 'REPORTS', path: '/app/reports', icon: <BarChart3 className="w-4 h-4" />, allowedRoles: ['ADMIN', 'HR', 'FINANCE', 'MANAGER'] },
   { name: 'SECURITY', path: '/app/security', icon: <ShieldAlert className="w-4 h-4 text-wt-red" />, allowedRoles: ['ADMIN'] },
   { name: 'SETTINGS', path: '/app/settings', icon: <Settings className="w-4 h-4" />, allowedRoles: ['ADMIN', 'HR'] },
@@ -128,7 +128,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {!collapsed && onRoleChange && (
           <div className="mb-3">
             <div className="flex items-center justify-between text-[10px] font-mono uppercase text-wt-gray mb-1">
-              <span>// ACTIVE ROLE</span>
+              <span>ACTIVE ROLE</span>
               <span className="text-wt-yellow">DEV MODE</span>
             </div>
             <select

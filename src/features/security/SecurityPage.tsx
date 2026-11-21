@@ -100,7 +100,7 @@ export const SecurityPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-wt-white/20 pb-4">
         <div>
-          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">// THREAT DETECTION & CRYPTOGRAPHY</div>
+          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">THREAT DETECTION & CRYPTOGRAPHY</div>
           <h2 className="font-display text-3xl font-black text-wt-white uppercase">SECURITY & AUDIT CHAIN</h2>
         </div>
         <Button variant="primary" size="md" onClick={handleVerifyChain} disabled={isVerifying}>
@@ -163,7 +163,7 @@ export const SecurityPage: React.FC = () => {
                         : 'border-wt-yellow bg-wt-yellow text-wt-black'
                     }`}
                   >
-                    // {sig.severity} SEVERITY
+                    {sig.severity} SEVERITY
                   </span>
                   <span className="font-bold text-wt-white uppercase">{sig.kind}</span>
                 </div>
@@ -207,7 +207,7 @@ export const SecurityPage: React.FC = () => {
       {activeTab === 'INTEGRITY' && (
         <GlassCard variant="yellow" hud className="p-8 bg-wt-black/95 font-mono text-xs space-y-4">
           <h3 className="font-mono text-base uppercase font-bold text-wt-yellow">
-            // SHA-256 HASH CHAINING MATHEMATICAL SPECIFICATION
+            SHA-256 HASH CHAINING MATHEMATICAL SPECIFICATION
           </h3>
           <p className="text-wt-gray uppercase leading-relaxed">
             Every critical enterprise mutation (Login, Biometric Enrollment, Attendance Check-In, Leave Approval, Payroll Disbursement, Document Verification) is committed as an immutable block.

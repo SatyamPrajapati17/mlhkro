@@ -42,7 +42,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ currentRole }) => 
       {/* 1. Header greeting & role banner */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b-2 border-wt-white/20">
         <div>
-          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">// ACTIVE TERMINAL</div>
+          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">ACTIVE TERMINAL</div>
           <h2 className="font-display text-3xl font-black text-wt-white uppercase">
             CONTROL ROOM · <span className="text-wt-yellow">{currentRole}</span>
           </h2>
@@ -68,7 +68,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ currentRole }) => 
           <div className="flex items-center gap-2 mb-2">
             <Bot className="w-4 h-4 text-wt-yellow" />
             <span className="font-mono text-xs uppercase font-bold text-wt-white">
-              TAK//AI QUICK-ASK (ROLE SCOPED)
+              TAK AI QUICK-ASK (ROLE SCOPED)
             </span>
           </div>
           <form onSubmit={handleAskAI} className="flex gap-2">
@@ -110,7 +110,7 @@ const EmployeeDashboard: React.FC = () => {
           <GlassCard variant="red" hud className="h-full flex flex-col justify-between p-6 bg-wt-black/95">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="font-mono text-xs uppercase text-wt-gray font-bold">// DAILY ATTENDANCE</span>
+                <span className="font-mono text-xs uppercase text-wt-gray font-bold">DAILY ATTENDANCE</span>
                 <span className="font-mono text-xs px-2 py-0.5 bg-wt-black text-wt-yellow border border-wt-yellow font-bold">
                   NOT CHECKED IN
                 </span>
@@ -168,7 +168,7 @@ const EmployeeDashboard: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <GlassCard variant="white" hud className="p-5 bg-wt-black/90">
           <div className="font-mono text-xs uppercase font-bold text-wt-yellow mb-3">
-            // NOVEMBER 2026 ATTENDANCE LOG
+            NOVEMBER 2026 ATTENDANCE LOG
           </div>
           <div className="grid grid-cols-7 gap-1 font-mono text-[10px] text-center">
             {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d, i) => (
@@ -209,7 +209,7 @@ const EmployeeDashboard: React.FC = () => {
 
         <GlassCard variant="yellow" hud className="p-5 bg-wt-black/90">
           <div className="font-mono text-xs uppercase font-bold text-wt-yellow mb-3">
-            // ONBOARDING & COMPLIANCE CHECKLIST
+            ONBOARDING & COMPLIANCE CHECKLIST
           </div>
           <div className="space-y-3 font-mono text-xs">
             <div className="flex items-center justify-between p-2.5 border border-wt-white/30 bg-wt-black">
@@ -258,7 +258,7 @@ const ManagerDashboard: React.FC = () => {
         <div className="md:col-span-7">
           <GlassCard variant="yellow" hud className="p-5 bg-wt-black/95">
             <div className="font-mono text-xs uppercase font-bold text-wt-white mb-4 flex items-center justify-between">
-              <span>// REAL-TIME TEAM PRESENCE (14 MEMBERS)</span>
+              <span>REAL-TIME TEAM PRESENCE (14 MEMBERS)</span>
               <span className="text-wt-yellow font-bold">● LIVE</span>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 font-mono text-xs">
@@ -286,7 +286,7 @@ const ManagerDashboard: React.FC = () => {
         <div className="md:col-span-5">
           <GlassCard variant="red" hud className="p-5 bg-wt-black/95">
             <div className="font-mono text-xs uppercase font-bold text-wt-white mb-4">
-              // PENDING TEAM APPROVALS (3)
+              PENDING TEAM APPROVALS (3)
             </div>
             <div className="space-y-3 font-mono text-xs">
               <div className="p-3 border-2 border-wt-white bg-wt-black space-y-2">
@@ -336,7 +336,7 @@ const HrDashboard: React.FC = () => {
         <div className="md:col-span-6">
           <GlassCard variant="yellow" hud className="p-5 bg-wt-black/95">
             <div className="font-mono text-xs uppercase font-bold text-wt-white mb-4 flex items-center justify-between">
-              <span>// AI DOCUMENT VERIFICATION QUEUE (3)</span>
+              <span>DOCUMENT VERIFICATION QUEUE (3)</span>
               <span className="text-wt-yellow">CONFIDENCE &gt; 95%</span>
             </div>
             <div className="space-y-3 font-mono text-xs">
@@ -364,7 +364,7 @@ const HrDashboard: React.FC = () => {
         <div className="md:col-span-6">
           <GlassCard variant="red" hud className="p-5 bg-wt-black/95">
             <div className="font-mono text-xs uppercase font-bold text-wt-white mb-4">
-              // FACE ENROLLMENT HEALTH
+              FACE ENROLLMENT HEALTH
             </div>
             <div className="space-y-4 font-mono text-xs">
               <div>
@@ -406,7 +406,7 @@ const FinanceDashboard: React.FC = () => {
         <div className="md:col-span-7">
           <GlassCard variant="yellow" hud className="p-5 bg-wt-black/95">
             <div className="font-mono text-xs uppercase font-bold text-wt-white mb-4">
-              // PAYROLL COST BY DEPARTMENT (NOV 2026)
+              PAYROLL COST BY DEPARTMENT (NOV 2026)
             </div>
             <div className="space-y-3 font-mono text-xs">
               {[
@@ -432,10 +432,10 @@ const FinanceDashboard: React.FC = () => {
         <div className="md:col-span-5">
           <GlassCard variant="red" hud className="p-5 bg-wt-black/95">
             <div className="font-mono text-xs uppercase font-bold text-wt-white mb-4">
-              // PAYROLL ACTION REQUIRED
+              PAYROLL ACTION REQUIRED
             </div>
             <div className="p-4 border-2 border-wt-white bg-wt-black space-y-3 font-mono text-xs">
-              <div className="text-wt-yellow font-bold">// WORKFLOW STAGE: DRAFT → REVIEW</div>
+              <div className="text-wt-yellow font-bold">WORKFLOW STAGE: DRAFT → REVIEW</div>
               <p className="text-wt-gray text-[11px]">
                 Attendance records aggregated. LOP deductions computed for 3 employees. 1 anomaly detected (Rahul Nair net pay increased 28% due to bonus).
               </p>
@@ -466,7 +466,7 @@ const AdminDashboard: React.FC = () => {
         <div className="md:col-span-6">
           <GlassCard variant="red" hud className="p-5 bg-wt-black/95">
             <div className="font-mono text-xs uppercase font-bold text-wt-white mb-4">
-              // EXECUTIVE APPROVALS NEEDED
+              EXECUTIVE APPROVALS NEEDED
             </div>
             <div className="p-4 border-2 border-wt-white bg-wt-black font-mono text-xs space-y-3">
               <div className="flex justify-between items-center">
@@ -492,7 +492,7 @@ const AdminDashboard: React.FC = () => {
         <div className="md:col-span-6">
           <GlassCard variant="yellow" hud className="p-5 bg-wt-black/95">
             <div className="font-mono text-xs uppercase font-bold text-wt-white mb-4 flex items-center justify-between">
-              <span>// IMMUTABLE AUDIT STREAM</span>
+              <span>IMMUTABLE AUDIT STREAM</span>
               <span className="text-wt-yellow font-bold">CHAIN INTACT</span>
             </div>
             <div className="space-y-2 font-mono text-[11px] text-wt-gray">

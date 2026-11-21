@@ -25,7 +25,7 @@ export const KpiTile: React.FC<KpiTileProps> = ({
     <GlassCard variant={variant} hud interactive className={clsx('flex flex-col justify-between min-h-[140px]', className)}>
       <div className="flex items-center justify-between">
         <span className="font-mono text-xs uppercase tracking-widest text-wt-gray font-bold">
-          // {label}
+          {label}
         </span>
         {delta && (
           <span

@@ -194,7 +194,7 @@ aiRouter.post('/chat', requireAuth, async (req: Request, res: Response) => {
                 role: 'user',
                 parts: [
                   {
-                    text: `You are TAK//AI, an enterprise management assistant in WorkTak.
+                    text: `You are WorkTak AI, an enterprise management assistant in WorkTak.
 Current User Role: ${user.role}
 Current User Name: ${user.fullName}
 Tool Called: ${toolToCall}

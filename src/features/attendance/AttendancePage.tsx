@@ -86,7 +86,7 @@ export const AttendancePage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-wt-white/20 pb-4">
         <div>
-          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">// ATTENDANCE AUDIT LOGS</div>
+          <div className="font-mono text-xs text-wt-gray uppercase tracking-widest">ATTENDANCE AUDIT LOGS</div>
           <h2 className="font-display text-3xl font-black text-wt-white uppercase">ATTENDANCE LOGS</h2>
         </div>
         <div className="flex items-center gap-2">
@@ -115,7 +115,7 @@ export const AttendancePage: React.FC = () => {
               <ShieldAlert className="w-4 h-4 text-wt-yellow" />
               PENDING MANUAL ATTENDANCE REQUESTS ({manualRequests.length})
             </h4>
-            <span className="font-mono text-[11px] text-wt-gray">// REQUIRES APPROVAL</span>
+            <span className="font-mono text-[11px] text-wt-gray">REQUIRES APPROVAL</span>
           </div>
           <div className="space-y-3 font-mono text-xs">
             {manualRequests.map((m) => (

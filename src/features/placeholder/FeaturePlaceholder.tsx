@@ -16,7 +16,7 @@ export const FeaturePlaceholder: React.FC<FeaturePlaceholderProps> = ({
   return (
     <div className="space-y-6">
       <div className="border-b-2 border-wt-white/20 pb-3">
-        <div className="font-mono text-xs text-wt-gray uppercase">// MODULE INITIALIZED</div>
+        <div className="font-mono text-xs text-wt-gray uppercase">MODULE INITIALIZED</div>
         <h2 className="font-display text-3xl font-black text-wt-white uppercase">{moduleName}</h2>
       </div>
 

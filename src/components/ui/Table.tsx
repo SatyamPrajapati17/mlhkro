@@ -50,7 +50,7 @@ export function Table<T>({
                 colSpan={columns.length}
                 className="px-4 py-12 text-center text-wt-gray font-mono uppercase tracking-widest text-xs"
               >
-                // {emptyMessage}
+                {emptyMessage}
               </td>
             </tr>
           ) : (
